@@ -1,0 +1,37 @@
+h1 {
+  font-size: 72px;
+  color: #fff;
+  text-align: center;
+  padding: 16px;
+  margin-top: 50px;
+
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+body {
+    background-color: #007bff;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+  }
+  
+  .play-button {
+    background-color: white;
+    color: #007bff;
+    font-size: 24px;
+    padding: 16px 32px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+  }
+  
