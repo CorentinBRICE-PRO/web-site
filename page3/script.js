@@ -3,4 +3,3 @@ function changerDe() {
     var resultat = Math.floor(Math.random() * 6) + 1;
     de.src = "../assets/images/de" + resultat + ".png";
   }
-  

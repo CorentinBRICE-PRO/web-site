@@ -9,9 +9,17 @@
   <!-- utilisation de style="text-align:center pour centrer le texte, ici notre titre de page"-->
   <h1 style="text-align:center">CHOISISSEZ VOTRE NOMBRE DE JOUEUR</h1>
   <div class="Button">
-    <!--utilisation de a href pour donner une réference a la page suivante-->
-    <a href="../pageJeu/pageJeu.html"><button class="button-gauche">2 joueurs</button></a>
-    <a href="../pageJeu/pageJeu.html"><button class="button-milieu">3 joueurs</button></a>
-    <a href="../pageJeu/pageJeu.html"><button class="button-droite">4 joueurs</button></a>
+   <button id="bouton-1"value= "2"class="button-gauche" >2 joueurs</button></a>
+   <button id="bouton-2"value="3"class="button-milieu">3 joueurs</button></a>
+   <button id="bouton-3"value="4"class="button-droite">4 joueurs</button></a>
   </div>
+  <script>
+    var boutons = document.querySelectorAll("button");
+    for (var i = 0; i < boutons.length; i++) {
+        boutons[i].addEventListener("click", function() {
+            var valeurDuBouton = this.value;
+            window.location.href = "../pageJeu/pageJeu.html?valeur=" + valeurDuBouton;
+        });
+    }
+  </script>
 </html>
