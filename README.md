@@ -1,3 +1,10 @@
+# Trivial poursuite
+
+Jeux de Carte de Quizz
+
+## Maquette
+
+![Alt text](assets/images/maquette.png)
 # Projet AWS : Trivial Pursuit
 
 Groupe 5 : BRICE Corentin, DJEBLAHI Ahmed, GUERIN Raphael, SAID Wail Rachad.
