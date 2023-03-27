@@ -4,4 +4,4 @@ Jeux de Carte de Mémoire multi-joueurs
 
 ## Maquette
 
-![Alt text](assets\images\maquette.png)
+![Alt text](assets/images/maquette.png)
