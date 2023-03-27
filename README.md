@@ -1,6 +1,6 @@
 # Trivial poursuite
 
-Jeux de Carte de Mémoire multi-joueurs
+Jeux de Carte de Quizz
 
 ## Maquette
 
