@@ -48,8 +48,9 @@ body {
   .container2 {
     right: 10px;
     display: flex;
-    justify-content: right;
+    justify-content: left;
     align-items: row;
+    margin-left: 45px;
     height: 100px;
     flex-direction: row;
   }
@@ -143,6 +144,19 @@ body {
     background-color: rgb(128, 77, 0);
   }
 
+.plateau {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(255, 0, 0);
+  position: relative;
+  margin-top: 100px;
+  margin-left: 50px;
+  width:425px;
+  height:425px;
+  }
+  
+    
 /* td correspond a la case d'un tableau */
 td{ 
   width:50px;
@@ -204,7 +218,5 @@ td.couleur6{
 }
 
 
-
-  
 
   

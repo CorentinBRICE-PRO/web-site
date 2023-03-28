@@ -1,15 +1,10 @@
-
-/* on attribue la valeur a valeurDuBouton selon le bouton et le nombre de joueur choisi*/ 
+/* script grace au javascript permettant de recuperer le nombre de joueur selon le nombre de joueur 
+    choisi. Une page est renvoyé avec le bon nombre de joueur ainsi que le plateau de jeu affiché à l'écran */
+ 
 var boutons = document.querySelectorAll("button");
 for (var i = 0; i < boutons.length; i++) {
-  boutons[i].addEventListener("click", function() {
-    var valeurDuBouton = this.value;
-    window.location.href = "../pageJeu/pageJeu.html?valeurDuBouton=" + encodeURIComponent(valeurDuBouton);
-  });
-}
-
-/* fonction permettant de récuperer la valeur du nombre de joueur et renvoyer la page associé avec le bon nombre de joueur et le jeu*/
-function afficherValeur() {
-  var valeur = document.getElementById("input-valeur").value;
-  window.location.href = "../pageJeu/pageJeu.html?valeurDuBouton=" + encodeURIComponent(valeur);
+    boutons[i].addEventListener("click", function() {
+        var valeurDuBouton = this.value;
+        window.location.href = "../pageJeu/pageJeu.html?valeur=" + valeurDuBouton;
+    });
 }
