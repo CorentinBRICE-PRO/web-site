@@ -1,24 +1,27 @@
+
+/* page en general on peu changer sa couleur etc...*/
 body {
-    background-color: #f5f5f5;
+    background-color: white;
     position: relative;
-
     justify-content: top;
-
   }
+  
+  
+  /*Pour le dé aussi
   
   .container {
     display: flex;
     justify-content: center;
     align-items: center;
-  height: 100vh;
-  }
+    height: 100%;
+  }*/
   
   
   .dice {
     width: 200px;
     height: 200px;
     background-color: white;
-    border: 1px solid black;
+    border: 1px solid blue;
     border-radius: 8px;
     display: flex;
     justify-content: center;
@@ -27,44 +30,52 @@ body {
     font-weight: bold;
   }
 
-  #de {
+ /* Pour le lancement de dés en commentaire pour le moment mais fonctionne pour 
+ un chiffre entre 1 et 6
+ 
+ #de {
     max-width: 100px;
     max-height: 100px;
   }
+
   #message {
     font-size: 24px;
     text-align: center;
     margin-top: 20px;
-  }
+  }*/
   
+  /*  */
   .container2 {
-    margin-top: 50px;
+    right: 10px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    justify-content: right;
+    align-items: row;
+    height: 100px;
     flex-direction: row;
-    margin-top: 20px;
- 
   }
   
+  /* rectangle où vont etre introduit les élements de chaque joueurs*/
   .rectangle {
     display: flex;
     justify-content: right;
     align-items: center;
-    width: 275px;
+    width: 250px;
     height: 150px;
     background-color: rgb(255, 255, 255);
     position: relative;
     border: 5px solid black;
     border-radius: 10%;
     margin-bottom: 10px;
+    /* permet de decaler les rectangles vers la droite en modifiant la valeur du margin*/
+    margin-left: 10px;
   }
 
+  /* espace entre chaque rectangle représentant chaque joueur selon si il y a 2/3/4 joueurs*/
   .rectangle:not(:last-child) {
     margin-right: 10px;
   }
  
+  /* ecriture joueur1/2/3 dans le rectangle*/
   .rectangle span {
     position: absolute;
     top: 15px;
@@ -73,10 +84,11 @@ body {
     font-weight: bold;
   }
   
+  /* création du camenbert*/
   .camenbert {
     position: relative;
-    width: 125px;
-    height: 125px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     background-color: rgb(0, 0, 0);
     border: 5px solid black;
@@ -86,6 +98,7 @@ body {
 
   }
   
+  /* création des differentes parties du camenbert*/
   .part{
     position: absolute;
     width: 100%;
@@ -94,33 +107,104 @@ body {
     transform-origin: center;
   }
   
+  /* partie 1 du camenbert, on lui donne sa position (angle) ainsi que sa couleur*/
   .part-1 {
     transform: rotate(0deg);
     background-color: rgb(0, 255, 30);
   }
   
+  /* partie 2 du camenbert, on lui donne sa position (angle) ainsi que sa couleur*/
   .part-2 {
     transform: rotate(60deg);
     background-color: rgb(230, 0, 255);
   }
   
+  /* partie 3 du camenbert, on lui donne sa position (angle) ainsi que sa couleur*/
   .part-3 {
     transform: rotate(120deg);
     background-color: rgb(255, 85, 0);
   }
   
+  /* partie 4 du camenbert, on lui donne sa position (angle) ainsi que sa couleur*/
   .part-4 {
     transform: rotate(180deg);
     background-color: rgb(242, 255, 0);
   }
   
+  /* partie 5 du camenbert, on lui donne sa position (angle) ainsi que sa couleur*/
   .part-5 {
     transform: rotate(240deg);
     background-color: rgb(43, 0, 255);
   }
   
+  /* partie 6 du camenbert, on lui donne sa position (angle) ainsi que sa couleur*/
   .part-6 {
     transform: rotate(300deg);
     background-color: rgb(128, 77, 0);
   }
+
+/* td correspond a la case d'un tableau */
+td{ 
+  width:50px;
+  height:50px;
+}
+
+/* table represente notre tableau de donné qui aura comme but de créer le plateau*/
+table{
+    background-color: white;
+}
+
+/* couleur 0 correspond a la couleur blanche de notre tableau */
+td.couleur0{
+    background-color: white;
+    width:50px;
+    height:50px;
+}
+
+/* couleur 0 correspond a la couleur bleu de notre tableau */
+td.couleur1{
+    background-color: rgb(43, 0, 255);
+    width:50px;
+    height:50px;
+}
+
+/* couleur 0 correspond a la couleur jaune de notre tableau */
+td.couleur2{
+    background-color: rgb(242, 255, 0);
+    width:50px;
+    height:50px;
+}
+
+/* couleur 0 correspond a la couleur marron de notre tableau */
+td.couleur3{
+    background-color: rgb(128, 77, 0);
+    width:50px;
+    height:50px;
+}
+
+/* couleur 0 correspond a la couleur verte de notre tableau */
+td.couleur4{
+    background-color: rgb(0, 255, 30);
+    width:50px;
+    height:50px;
+}
+
+/* couleur 0 correspond a la couleur rouge de notre tableau */
+td.couleur5{ 
+  background-color: rgb(255, 85, 0);
+    width:50px;
+    height:50px;
+}
+
+/* couleur 0 correspond a la couleur rose de notre tableau */
+td.couleur6{ 
+  background-color: rgb(230, 0, 255);
+    width:50px;
+    height:50px;
+}
+
+
+
+  
+
   

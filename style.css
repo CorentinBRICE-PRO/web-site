@@ -1,3 +1,4 @@
+/* modification des parametre pour le texte "trivial poursuite"*/
 h1 {
   font-size: 72px;
   color: black;
@@ -13,18 +14,19 @@ h1 {
   align-items: center;
   
 }
-
+ /*parametre de la page entière (la couleur de son fond)*/
 body {
     background-color: white;
   }
   
+  /*attribut pour placer le bouton sur la page*/
   .container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 50vh;
   }
-  
+  /* attribut permettant de changer le design du bouton et ses parametres*/
   .play-button {
     background-color: blue;
     color: white;

@@ -2,7 +2,7 @@ body {
     background-color: #f5f5f5;
   }
   
-  /* Button represente tous les buttons (button-gauche/droite/milieu, c'est le container*/
+  /* Button represente tous les buttons (button-gauche/droite/milieu*/
   .Button {
     display: flex;
     justify-content: center;
