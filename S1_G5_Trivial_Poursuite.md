@@ -42,7 +42,7 @@ Pour encore plus sécurisé le site on pourrait obliger aux joueurs de créer un
 
 ### **Le Responsable** (SAID Wail Rachad) :
 
-Avant de commencer à programmer SAID à créer un Monday, un site qui permet de distribuer les tâches et planifier les tâches à faire. Nous avons choisis à l'unanimité le jeu du Trivial Poursuite. SAID à ensuite reparti les tâches pour les codeurs et donné les pistes à rechercher pour le chercheur. Et tous au long de la semaine il vérifiait l'avancement des tâches et ajoutait des tâches si nous avions fini. 
+Avant de se lancer dans la programmation de Trivial Poursuite, nous avons mis en place un outil de gestion de tâches appelé Monday. Cet outil nous permet de répartir et de planifier les tâches à réaliser. Nous avons choisi de manière unanime de travailler sur le jeu Trivial Poursuite. SAID, notre chef de projet, a ensuite réparti les différentes tâches entre les codeurs et fourni des indications aux chercheurs pour leurs recherches. Tout au long de la semaine, il a suivi l'avancement des tâches et ajouté de nouvelles tâches lorsque nécessaire.
 
 <br>
 
