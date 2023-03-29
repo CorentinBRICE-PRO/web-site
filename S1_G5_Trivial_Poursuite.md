@@ -23,24 +23,24 @@ Ensuite, la page2 qui contient, comme dit précédement, les boutons permetant d
 
 Après cela nous avons décidé de créer les differents profils dans la maquette. Au début nous avons commencé par créer les différents profils. Puis nous avons commencé à faire les célèbre camembert du Trivial Poursuite. Mais nous avons eu des difficulté avec la forme des parts du camembert. Après elles étaient superposées nous avons dû chercher comment les séparer et faire en sorte qu’elles ne se superposent plus. Pour le cercle en lui même pas de problème, après c’était de l’ajustement. Par contre pour la mise en place c’était une autre histoire, encore une fois le positionement nous à poser des soucis.
 
-Le Plateau lui nous à pris du temps. Malgré les nombreuses recherches et du chercheur sur le sujet, il a été difficile de trouver la bonne méthode à utiliser. Après avoir bidouiller un moment nous sommes revenu sur le tableau fait un TD. Le plateau n'est pas encore parfait mais c'est un bon début.
+Le Plateau lui nous à pris du temps. Malgré les nombreuses recherches sur le sujet, il a été difficile de trouver la bonne méthode à utiliser. Après avoir modifier plusieurs fois le code, nous sommes revenu sur le tableau fait un TD. Le plateau n'est pas encore parfait mais c'est un bon début.
 
 ### **Le Chercheur** (GUERIN Raphael) :
 
-PLUS DETAILLé
+Du côté des recherches, dans cette première semaine, le but était d'aider et de prévoir la suite pour le site. J'ai donc rechercher un peu tous les sujets sur lesquels ont avaient des difficultés (boutons , css, positionnement, etc...). Notamment sur le plateau qui a été la plus grosse difficulté de la semaine. 
 
-Du côté des recherches, dans cette première semaine, le but était d'aider et de prévoir la suite pour le site. J'ai donc rechercher comment créer des boutons, lié les boutons au pages, aidé à l'alignement des objets.
-Comment créer un dé pseudo-aléatoire. Faire un plateau de jeu, et des profils pour les joueurs.
+Mais aussi des moyens pour héberger le site et stocker ces données. Il existe un grand nombre de site permettant d'héberger gratuitement, ceux qui nous on les plus attiré sont : Google Cloud (Firebase, Cloud Run), AWS (Amazon Web Services) et FreeHosting. Ces sites on la particularité de rester gratuit à vies, son facile à utiliser pour un débutant et propose des services largement suffisant pour notre utilisation. 
 
-Mais aussi des moyens pour héberger le site et stocker ces données. 
+Il est maitenant possible d'héberger son site chez soit. Il nous faut un ordinateur et une box. Pour cela on peut utilisé Apache, pour lier notre site à l'adresse IP de notre Box. Toute fois cette méthode est dépendante de l'ordinateur sur lequel on Host le site et sur la Box. De plus il se pose des questions de sécurité, en effet si l'on veut que l'adresse IP privé ne soit pas visible il faut acheter un nom de domaine.
+
+Enfin une autre façon de faire est d'utilisé un vieux ordinateur et de le convertir en server. Mais il y a plusieurs problèmes avec cela, il faut que l'ordinateur reste allumer 24h/24 pour que le site soit tous le temps accessible. Et il faut une certaine configuration (carte réseau, carte mère etc...).
+
+En résumé pour le moment la méthode la plus interessante serait de faire héberger notre server par un site tiers.
 
 ### **Le Responsable** (SAID Wail Rachad) :
 
 <br>
 
-
-Rédigé par le chercheur : GUERIN Raphael
-<br>
 
 Les Sources et Sites des recherches :
 -----
@@ -68,3 +68,6 @@ Les camembert :
 
 Les possibles hebergeurs : 
 - https://firebase.google.com/docs/build?hl=fr
+- https://www.wpbeginner.com/showcase/best-free-website-hosting-compared/
+- https://www.freehosting.com/free-hosting.html
+- https://www.one.com/en/hosting/host-your-own-website
