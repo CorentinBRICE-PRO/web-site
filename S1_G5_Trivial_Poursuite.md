@@ -35,7 +35,10 @@ Il est maitenant possible d'héberger son site chez soit. Il nous faut un ordina
 
 Enfin une autre façon de faire est d'utilisé un vieux ordinateur et de le convertir en server. Mais il y a plusieurs problèmes avec cela, il faut que l'ordinateur reste allumer 24h/24 pour que le site soit tous le temps accessible. Et il faut une certaine configuration (carte réseau, carte mère etc...).
 
-En résumé pour le moment la méthode la plus interessante serait de faire héberger notre server par un site tiers.
+En résumé pour le moment, la méthode la plus interessante serait de faire héberger notre server par un site tiers.
+
+Suite à cela il à donc fallu réfléchir aux façons de sécuriser notre site, en particulier les parties. Pour sécuriser encore plus notre site, il faudrait chiffrer le fichier contenant les réponses et les réponses. Elles seraient du coup inaccessible aux joueurs et ne serait déchiffrer que lors des affichages. Ainsi même si le joueur accède au fichier sur le serveur, il ne pourra pas tricher. <br>
+Pour encore plus sécurisé le site on pourrait obliger aux joueurs de créer un compte. Ainsi les joueurs auront moins envie d'essayer de tricher. Il nous sera aussi possible de bloquer les joueurs ayant tricher.
 
 ### **Le Responsable** (SAID Wail Rachad) :
 
