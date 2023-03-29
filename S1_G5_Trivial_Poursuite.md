@@ -21,9 +21,9 @@ Les Codeurs ont commencer par le Menu Principale du jeu. Cette première page es
 
 Ensuite, la page2 qui contient, comme dit précédement, les boutons permetant de sélectionner le nombre de joueurs. On peut donc jouer à 2, 3 ou 4 personnes. Cette partie nous à posé pas mal de difficulté avec le CSS. Il à été difficile de positionner les boutons à l'emplacement exacte souhaité, avec les bonnes distances entre les boutons mais aussi avec les bords de l'écran.
 
-Après cela nous avons décidé de créer les differents profils afficher dans la maquette. En se basant sur le premier TD et sur les recherches cité plus loin il a été plutôt facile de créer les différents profils. Encore une fois la partie qui nous a posé le plus de problème c'est la partie CSS. Les profils n'était pas au bons endroits, les taille, la forme et les distanciation n'était pas à notre coût. Les profils étaient superposées
+Après cela nous avons décidé de créer les differents profils afficher dans la maquette. Au début nous avons commencé par créer les différents profils. Puis nous avons commencé à faire les célèbre cammebert du Trivial Poursuite. Mais nous avons eu des difficulté avec la forme des parts du camembert. Après elles étaient superposées nous avons dû chercher comment les séparer et faire en sorte qu’elles ne se superposent plus. Pour le cercle en lui même pas de problème, après c’était de l’ajustement. Par contre pour la mise en place c’était une autre histoire, encore une fois le positionement nous à poser des soucis.
 
-Le Plateau ...
+Le Plateau lui nous à pris du temps. Malgré les nombreuses recherches et du chercheur sur le sujet, il a été difficile de trouver la bonne méthode à utiliser. Après avoir bidouiller un moment nous sommes revenu sur le tableau fait un TD. Le plateau n'est pas encore parfait mais c'est un bon début.
 
 ### **Le Chercheur** (GUERIN Raphael) :
 
@@ -38,6 +38,9 @@ Mais aussi des moyens pour héberger le site et stocker ces données.
 
 <br>
 
+
+Rédigé par le chercheur : GUERIN Raphael
+<br>
 
 Les Sources et Sites des recherches :
 -----
