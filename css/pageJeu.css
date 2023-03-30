@@ -141,75 +141,65 @@ body {
 
 .plateau {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(0, 0, 0);
+  justify-content: left;
+  align-items: left;
   position: relative;
   margin-top: 100px;
   margin-left: 50px;
-  width:425px;
-  height:425px;
   }
   
     
 /* td correspond a la case d'un tableau */
 td{ 
-  width:50px;
-  height:50px;
+  width:80px;
+  height:80px;
 }
 
 /* table represente notre tableau de donné qui aura comme but de créer le plateau*/
 table{
     background-color: white;
+    
 }
 
 /* couleur 0 correspond a la couleur blanche de notre tableau */
 td.couleur0{
     background-color: white;
-    width:50px;
-    height:50px;
 }
 
 /* couleur 0 correspond a la couleur bleu de notre tableau */
 td.couleur1{
     background-color: rgb(43, 0, 255);
-    width:50px;
-    height:50px;
+    border: 2.5px solid black;
 }
 
 /* couleur 0 correspond a la couleur jaune de notre tableau */
 td.couleur2{
     background-color: rgb(242, 255, 0);
-    width:50px;
-    height:50px;
+    border: 2.5px solid black;
 }
 
 /* couleur 0 correspond a la couleur marron de notre tableau */
 td.couleur3{
     background-color: rgb(128, 77, 0);
-    width:50px;
-    height:50px;
+    border: 2.5px solid black;
 }
 
 /* couleur 0 correspond a la couleur verte de notre tableau */
 td.couleur4{
     background-color: rgb(0, 255, 30);
-    width:50px;
-    height:50px;
+    border: 2.5px solid black;
 }
 
 /* couleur 0 correspond a la couleur rouge de notre tableau */
 td.couleur5{ 
   background-color: rgb(255, 85, 0);
-    width:50px;
-    height:50px;
+  border: 2.5px solid black;
 }
 
 /* couleur 0 correspond a la couleur rose de notre tableau */
 td.couleur6{ 
   background-color: rgb(230, 0, 255);
-    width:50px;
-    height:50px;
+  border: 2.5px solid black;
 }
 
 
