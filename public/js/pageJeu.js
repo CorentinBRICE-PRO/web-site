@@ -7,26 +7,7 @@ document.getElementById("nombreJoueur").value = valeurDuBouton;
 
 
 // Créer le code HTML des profils avec camnberts correspondant aux nombre de joueurs
-var codeHTML = '';
-for (var i = 1; i <= valeurDuBouton; i++) {
-  codeHTML += '<div class="rectangle">';
-  codeHTML +=   '<span>Joueur ' + i + '</span>';
-  codeHTML +=   '<div class="camenbert">';
-  codeHTML +=     '<div class="part part-1"></div>';
-  codeHTML +=     '<div class="part part-2"></div>';
-  codeHTML +=     '<div class="part part-3"></div>';
-  codeHTML +=     '<div class="part part-4"></div>';
-  codeHTML +=     '<div class="part part-5"></div>';
-  codeHTML +=     '<div class="part part-6"></div>';
-  codeHTML +=     '<div class="line line1"></div>';
-  codeHTML +=     '<div class="line line2"></div>';
-  codeHTML +=     '<div class="line line3"></div>';
-  codeHTML +=   '</div>';
-  codeHTML +=   '</div>';
 
-}
-// Insérer le code HTML dans la page jeu
-document.getElementById('joueurs-container').innerHTML = codeHTML;
 
 
 // Genere aleatoirement une face d'un dé
@@ -39,7 +20,6 @@ function changerDe() {
 
 
 // Configuration de Firebase
-// Configuration de Firebase
 var firebaseConfig = {
   apiKey: "AIzaSyAspisnbtuq7zXqNyeFA0xfkRKPCwlKDXk",
   authDomain: "trivialpoursite.firebaseapp.com",
@@ -50,10 +30,10 @@ var firebaseConfig = {
   measurementId: "G-KF17Q422EM"
 };
 
-// Initialisez votre application Firebase
+// Initialise l'application Firebase
 firebase.initializeApp(firebaseConfig);
 
-// Créez une référence à votre base de données Firestore
+// Créez une référence à Firestore
 const db = firebase.firestore();
 
 // Fonction qui génère un message aléatoire
@@ -63,8 +43,7 @@ function generateRandomMessage() {
   return messages[randomIndex];
 }
 
-// Ajoutez un événement de clic à votre bouton
-const button = document.getElementById("your-button-id");
+const button = document.getElementById("cliquerici");
 button.addEventListener("click", function() {
   // Appelez la fonction qui génère un message aléatoire
   const message = generateRandomMessage();
@@ -95,3 +74,40 @@ messagesCollection.doc('q1').get().then((doc) => {
 }).catch((error) => {
   console.log("Erreur lors de la lecture du document :", error);
 });
+
+
+firebase.firestore().collection('partie').doc('Partie1').get()
+  .then((doc) => {
+    if (doc.exists) {
+      toto =doc.data().nbjoueurs;
+      const nbJoueurs = doc.data().nbjoueurs;
+      console.log(nbJoueurs);  
+      var codeHTML = '';
+for (var i = 1; i <=  nbJoueurs; i++) {
+  codeHTML += '<div class="rectangle">';
+  codeHTML +=   '<span>Joueur ' + i + '</span>';
+  codeHTML +=   '<div class="camenbert">';
+  codeHTML +=     '<div class="part part-1"></div>';
+  codeHTML +=     '<div class="part part-2"></div>';
+  codeHTML +=     '<div class="part part-3"></div>';
+  codeHTML +=     '<div class="part part-4"></div>';
+  codeHTML +=     '<div class="part part-5"></div>';
+  codeHTML +=     '<div class="part part-6"></div>';
+  codeHTML +=     '<div class="line line1"></div>';
+  codeHTML +=     '<div class="line line2"></div>';
+  codeHTML +=     '<div class="line line3"></div>';
+  codeHTML +=   '</div>';
+  codeHTML +=   '</div>';
+
+}
+// Insérer le code HTML dans la page jeu
+document.getElementById('joueurs-container').innerHTML = codeHTML;
+    } else {
+      console.log("Le document n'existe pas !");
+    }
+  })
+  .catch((error) => {
+    console.log("Erreur lors de la récupération du document : ", error);
+  });
+
+  window.onload = updateValeur;
