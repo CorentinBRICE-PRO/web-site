@@ -74,16 +74,15 @@ body {
   
   /* création du camenbert (le cercle)*/
   .camenbert {
-    position: relative;
-    width: 47%;
-    height: 80%;
-    border-radius: 50%;
+    margin-right: 20px;
     background-color: rgb(0, 0, 0);
     border: 5px solid black;
+    width: 50%;
+    height: 0;
+    padding-bottom: 50%;
+    position: relative;
+    border-radius: 50%;
     overflow: hidden;
-    float: right;
-    margin-right: 20px;
-
   }
   
   /* création d'une part mere du camenbert*/
@@ -93,7 +92,13 @@ body {
     height: 100%;
     clip-path: polygon(50% 50%, 0 0, 65% 0);
     transform-origin: center;
+ 
+   
+    
+
   }
+
+  
   
   /* partie 1 du camenbert, on lui donne sa position (angle) ainsi que sa couleur*/
   .part-1 {
@@ -130,6 +135,30 @@ body {
     transform: rotate(300deg);
     background-color: rgb(128, 77, 0);
   }
+
+
+.line {
+  position: absolute;
+  top: -15%;
+  left: 50%;
+  width: 0;
+  height: 130%;
+  border-left: 5px solid black;
+}
+
+.line1 {
+  transform: rotate(15deg);
+
+}
+
+.line2 {
+  transform: rotate(75deg);
+}
+
+.line3 {
+  transform: rotate(135deg);
+}
+
 
 
 .plateauComplet {

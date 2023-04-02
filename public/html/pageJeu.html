@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html>
+  <!-- Ajout de Firebase -->
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
+
 
 <head>
   <meta charset="UTF-8">
@@ -12,8 +16,11 @@
   injecter par le script.js -->
   <div id="nombreJoueur" class="containerProfil">
     <div id="joueurs-container" class="container2">
+     
     </div>
   </div>
+  <p>Question : <span id="message"></span></p>
+  <button id="your-button-id">Cliquez ici</button>
 
   <div class="plateauComplet">
    
@@ -106,7 +113,12 @@
       <img id="de" src="../assets/images/de1.png" onclick="changerDe()">
     </div> 
   </div>
+  
   <script src="../js/pageJeu.js"></script>
+  
+	
+
+	
 </body>
 
 </html>
