@@ -13,17 +13,16 @@ document.getElementById("nombreJoueur").value = valeurDuBouton;
 
 
 
-// Configuration de Firebase
-require('dotenv').config();
-
 const firebaseConfig = {
-  apiKey: process.env.FIREBASE_API_KEY,
-  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.FIREBASE_PROJECT_ID,
-  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.FIREBASE_APP_ID
-};
+  apiKey: "AIzaSyAspisnbtuq7zXqNyeFA0xfkRKPCwlKDXk",
+  authDomain: "trivialpoursite.firebaseapp.com",
+  projectId: "trivialpoursite",
+  storageBucket: "trivialpoursite.appspot.com",
+  messagingSenderId: "934201717719",
+  appId: "1:934201717719:web:77188c864e7bc443085192",
+  measurementId: "G-KF17Q422EM"
+  };
+      
 
 // Utilisez firebaseConfig pour initialiser votre connexion Firestore
 
