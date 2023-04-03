@@ -19,34 +19,34 @@ firebase.initializeApp(firebaseConfig);
   
 
 console.log("ca marche pas");
+
 var boutons = document.querySelectorAll("button");
 let valeurDuBouton;
 for (var i = 0; i < (boutons.length-1); i++) {
     boutons[i].addEventListener("click", function() {
-        
-        const valeurDuBouton = this.value; 
-   
-    firebase.firestore().collection('partie').doc('Partie1').update({
-    nbjoueurs: valeurDuBouton
-    })
-
-    .then(() => {
-        console.log("Le champ 'nbjoueurs' a été mis à jour avec succès !");
-    })
-    .catch((error) => {
-        console.error("Erreur lors de la mise à jour du champ 'nbjoueurs' : ", error);
-    });
-    setTimeout(function() { }, 100); 
-   
-    //window.location.href = "../html/pageJeu.html?valeur=" + valeurDuBouton;
-     
+    valeurDuBouton = this.value; 
     });
 }
 
-let beatrice;
+
+
+function creerPartie() {
 
 
 
+var newidgameSaisie = document.getElementById("newidgameSaisie").value;
+firebase.firestore().collection("partie").doc(newidgameSaisie).set({
+  de: 2,
+  nbjoueurs: valeurDuBouton,
+})
+.then(() => {
+  console.log("Document ajouté avec succès !");
+  window.location.href = "../html/pageJeu.html?valeur=" + newidgameSaisie;
+})
+.catch((error) => {
+  console.error("Erreur lors de l'ajout du document :", error);
+});
+}
 
 
 function logPartie() {

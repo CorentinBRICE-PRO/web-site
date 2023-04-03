@@ -20,10 +20,16 @@
     <button id="bouton-3" value="4" class="button-droite">4 joueurs</button></a>
   </div>
   <div class="container">
-    <label for="idgame">Saisir l'id de la partie :</label>
-    <input type="text" id="idgame">
-    <button class="button-start" onclick="logPartie()">Commencer la partie</button>
+    <label for="newidgameSaisie">Saisir un id de partie de votre choix(oublie pas le nombre de joueurs):</label>
+    <input type="text" id="newidgameSaisie">
+    <button class="button-start" onclick="creerPartie()">Commencer une nouvelle partie</button>
   </div>
+  <div class="container">
+    <label for="idgame">Saisir l'id de la partie sauvegardé (pour tester : "Partie1") :</label>
+    <input type="text" id="idgame">
+    <button class="button-start" onclick="logPartie()">Charger la partie</button>
+  </div>
+  
   
 
   <script src="../js/page2.js"></script>
