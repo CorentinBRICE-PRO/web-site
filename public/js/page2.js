@@ -20,11 +20,12 @@ firebase.initializeApp(firebaseConfig);
 
 console.log("ca marche pas");
 var boutons = document.querySelectorAll("button");
-
-for (var i = 0; i < boutons.length; i++) {
+let valeurDuBouton;
+for (var i = 0; i < (boutons.length-1); i++) {
     boutons[i].addEventListener("click", function() {
+        
         const valeurDuBouton = this.value; 
-    setTimeout(function() {
+   
     firebase.firestore().collection('partie').doc('Partie1').update({
     nbjoueurs: valeurDuBouton
     })
@@ -35,10 +36,36 @@ for (var i = 0; i < boutons.length; i++) {
     .catch((error) => {
         console.error("Erreur lors de la mise à jour du champ 'nbjoueurs' : ", error);
     });
-  
+    setTimeout(function() { }, 100); 
    
-    window.location.href = "../html/pageJeu.html?valeur=" + valeurDuBouton;
-      }, 1); 
+    //window.location.href = "../html/pageJeu.html?valeur=" + valeurDuBouton;
+     
     });
 }
-window.onload = updateValeur;
+
+let beatrice;
+
+
+
+
+
+function logPartie() {
+    var idsaisie = document.getElementById("idgame").value;
+    firebase.firestore().collection("partie").get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          if (doc.exists && doc.id === idsaisie) {
+            const idgame = doc.id;
+            window.location.href = "../html/pageJeu.html?valeur=" + idgame;
+     
+            console.log("La valeur de idgame est : ", idgame);
+        } else {
+           
+            console.log("idgame n'existe pas  !");
+        }
+    });
+    }).catch((error) => {
+        console.log("Erreur lors de la récupération du document : ", error);
+    });
+}
+
+

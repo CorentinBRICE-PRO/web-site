@@ -2,8 +2,7 @@
 // Création d'un objet URLSearchParams contenant les paramètres de l'URL actuelle pour la récupération
 //  de la valeur du paramètre "valeur" dans l'URL qui correspond au nombre de joueur
 var urlParams = new URLSearchParams(window.location.search);
-var valeurDuBouton = urlParams.get("valeur");
-document.getElementById("nombreJoueur").value = valeurDuBouton;
+var idgame = urlParams.get("valeur");
 
 
 // Créer le code HTML des profils avec camnberts correspondant aux nombre de joueurs
@@ -73,7 +72,7 @@ messagesCollection.doc('q1').get().then((doc) => {
 });
 
 
-firebase.firestore().collection('partie').doc('Partie1').get()
+firebase.firestore().collection('partie').doc(idgame).get()
   .then((doc) => {
     if (doc.exists) {
       toto =doc.data().nbjoueurs;
@@ -113,7 +112,7 @@ function changerDe() {
   var de = document.getElementById("de");
   var resultat = Math.floor(Math.random() * 6) + 1;
 
-  firebase.firestore().collection('partie').doc('Partie1').update({
+  firebase.firestore().collection('partie').doc(idgame).update({
     de: resultat
     })
 
