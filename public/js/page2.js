@@ -2,6 +2,8 @@
     choisi. Une page est renvoyé avec le bon nombre de joueur ainsi que le plateau 
     de jeu affiché à l'écran */
 
+
+//Configuration des identifiants de connexion pour la bd de Firebase (Firestore).
 const firebaseConfig = {
 apiKey: "AIzaSyAspisnbtuq7zXqNyeFA0xfkRKPCwlKDXk",
 authDomain: "trivialpoursite.firebaseapp.com",
@@ -12,14 +14,13 @@ appId: "1:934201717719:web:77188c864e7bc443085192",
 measurementId: "G-KF17Q422EM"
 };
     
-   
+
+//Initialisation de Firebase
   
-console.log("ca marche");
 firebase.initializeApp(firebaseConfig);
-  
 
-console.log("ca marche pas");
 
+// Attribution du nombre de joueur à la variable valeurDuBouton
 var boutons = document.querySelectorAll("button");
 let valeurDuBouton;
 for (var i = 0; i < (boutons.length-1); i++) {
@@ -29,18 +30,18 @@ for (var i = 0; i < (boutons.length-1); i++) {
 }
 
 
-
+// Création de partie dans la Firestore
 function creerPartie() {
-
-
-
+  // Recupere l'id de la partie saisie par l'utilisateur pour la creer dans la bd
 var newidgameSaisie = document.getElementById("newidgameSaisie").value;
+  // Atribution du nombre de joueur selectionné par l'utilisateur
 firebase.firestore().collection("partie").doc(newidgameSaisie).set({
   de: 2,
   nbjoueurs: valeurDuBouton,
 })
 .then(() => {
-  console.log("Document ajouté avec succès !");
+  //Redirection vesr la page de jeu de la nouvelle partie créée
+  console.log("nbjoueur ajouté avec succès !");
   window.location.href = "../html/pageJeu.html?valeur=" + newidgameSaisie;
 })
 .catch((error) => {
@@ -48,9 +49,10 @@ firebase.firestore().collection("partie").doc(newidgameSaisie).set({
 });
 }
 
-
+// Connexion a une partie deja existante dans la bd
 function logPartie() {
     var idsaisie = document.getElementById("idgame").value;
+    //Verifie si l'idgame saisie existe et si cest le cas charge la page de jeu adequate
     firebase.firestore().collection("partie").get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
           if (doc.exists && doc.id === idsaisie) {
