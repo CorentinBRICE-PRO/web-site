@@ -39,24 +39,6 @@ function generateRandomMessage() {
   return messages[randomIndex];
 }
 
-/*const button = document.getElementById("cliquerici");
-button.addEventListener("click", function() {
-  // Appelez la fonction qui génère un message aléatoire
-  const message = generateRandomMessage();
-
-  // Enregistrez le message dans la base de données Firestore
-  db.collection("messages").add({
-    text: message,
-    timestamp: firebase.firestore.FieldValue.serverTimestamp()
-  })
-  .then(function(docRef) {
-    console.log("Message enregistré avec l'ID:", docRef.id);
-  })
-  .catch(function(error) {
-    console.error("Erreur lors de l'enregistrement du message:", error);
-  });
-});*/
-
 
 const messagesCollection = firebase.firestore().collection('question');
 
@@ -70,6 +52,25 @@ messagesCollection.doc('q1').get().then((doc) => {
 }).catch((error) => {
   console.log("Erreur lors de la lecture du document :", error);
 });
+
+function verifierReponse() {
+  var repsaisie = document.getElementById("validationReponse").value;
+  firebase.firestore().collection("question").doc("q1").get().then((doc) => {
+    if (doc.exists) {
+      if (doc.data().rep === repsaisie) {
+        console.log("La réponse est vraie");
+      } else {
+        console.log("La réponse est fausse");
+      }
+    } else {
+      console.log("Le document n'existe pas.");
+    }
+  }).catch((error) => {
+    console.log("Erreur lors de la récupération du document : ", error);
+  });
+}
+
+
 
 
 firebase.firestore().collection('partie').doc(idgame).get()
@@ -117,10 +118,10 @@ function changerDe() {
     })
 
     .then(() => {
-        console.log("Le champ 'nbjoueurs' a été mis à jour avec succès !");
+        console.log("Le champ 'de' a été mis à jour avec succès !");
     })
     .catch((error) => {
-        console.error("Erreur lors de la mise à jour du champ 'nbjoueurs' : ", error);
+        console.error("Erreur lors de la mise à jour du champ 'de' : ", error);
     });
 
   de.src = "../assets/images/de" + resultat + ".png";

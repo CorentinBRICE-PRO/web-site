@@ -22,12 +22,13 @@
   <!--creation de la case question dans laquelle on recrée une case réponse où l'utilisateur peux rentrer sa reponse dans un champs de texte-->
   <div class="question">
 		<h1>Question</h1>
-		<p>Si on arrive a mettre la base de question ici c'est bingo !</p>
+    <p><span id="message"></span></p>
     <div class="reponse">
       <h2>Réponse</h2>
       <form>
-        <input type="text"><br><br>
+        <input type="text"id="validationReponse" ><br><br>
       </form>
+      <button  onclick="verifierReponse()"class="validation">Confirmer</button></a>
     </div>
 	</div>
 
