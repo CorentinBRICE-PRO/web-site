@@ -188,8 +188,8 @@ body {
 
 /* td correspond a la case d'un tableau */
 td{ 
-  width:80px;
-  height:80px;
+  width:70px;
+  height:70px;
 }
 
 /* table represente notre tableau de donné qui aura comme but de créer le plateau*/
@@ -239,6 +239,25 @@ td.couleur6{
   border: 2.5px solid black;
 }
 
+/* modification de l'espace question*/
+.question {
+	background-color: #f2f2f2;
+	border: 1px solid #ccc;
+	padding: 10px;
+  margin-right: 190px;
+	width: 30%;
+	float: right;
+}
+
+/*modification de l'espace reponse dans l'espace question*/
+.reponse {
+	width: 80%;
+  height: 400px;
+	margin-right: 50px;
+  margin-left: 50px;
+	padding: 10px;
+	border: 1px solid #ccc;
+}
 
 
   

@@ -39,7 +39,7 @@ function generateRandomMessage() {
   return messages[randomIndex];
 }
 
-const button = document.getElementById("cliquerici");
+/*const button = document.getElementById("cliquerici");
 button.addEventListener("click", function() {
   // Appelez la fonction qui génère un message aléatoire
   const message = generateRandomMessage();
@@ -55,7 +55,7 @@ button.addEventListener("click", function() {
   .catch(function(error) {
     console.error("Erreur lors de l'enregistrement du message:", error);
   });
-});
+});*/
 
 
 const messagesCollection = firebase.firestore().collection('question');

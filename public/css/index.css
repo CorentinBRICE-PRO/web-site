@@ -1,12 +1,12 @@
 /* modification des parametre pour le texte "trivial poursuite"*/
-h1 {
+/*h1 {
   font-size: 72px;
-  color: rgb(255, 255, 255);
+  color: purple;
   text-align: center;
   padding: 16px;
   margin-top: 50px;
 
-}
+}*/
 
 .container {
   display: flex;
@@ -17,6 +17,8 @@ h1 {
  /*parametre de la page entière (la couleur de son fond)*/
 body {
     background-color: rgb(50, 90, 234);
+    width: 80%;
+    background-image:url(../assets/images/backgroundaccueil.jpg);
   }
   
   /*attribut pour placer le bouton sur la page*/
@@ -24,12 +26,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50vh;
+    height: 700px;
+    width: 1400px;
   }
   /* attribut permettant de changer le design du bouton et ses parametres*/
   .play-button {
-    background-color: white;
-    color: rgb(50, 90, 234);
+    background-color: transparent;
+    color: black;
     font-size: 24px;
     padding: 16px 32px;
     border-radius: 8px;
