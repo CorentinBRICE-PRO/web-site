@@ -15,12 +15,18 @@
   
 }
  /*parametre de la page entière (la couleur de son fond)*/
-body {
-    background-color: rgb(50, 90, 234);
-    width: 80%;
-    background-image:url(../assets/images/backgroundaccueil.jpg);
-  }
-  
+ body {
+  background-color: rgb(50, 90, 234);
+  background-image: url(../assets/images/tetete.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
   /*attribut pour placer le bouton sur la page*/
   .container {
     display: flex;
