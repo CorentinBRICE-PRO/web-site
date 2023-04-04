@@ -76,3 +76,46 @@ Les possibles hebergeurs :
 - https://www.wpbeginner.com/showcase/best-free-website-hosting-compared/
 - https://www.freehosting.com/free-hosting.html
 - https://www.one.com/en/hosting/host-your-own-website
+
+
+
+SEMAINE 2
+Résumé semaine 2 :
+
+Les Codeurs (BRICE Corentin, DJEBLAHI Ahmed) :
+
+Pour cette deuxième semaine, les codeurs ont poursuivi le développement du projet Trivial Poursuite en se concentrant sur la partie back-end. Ils ont ajouté un fond d'écran sur les pages avec des images ou des couleurs, ainsi que des boutons sur la deuxième page permettant de récupérer et de sauvegarder une partie dans la base de données Firebase Cloud Firestore. Ils ont également ajouté une case sur la droite de la page de jeu pour afficher les questions et une barre de texte pour que l'utilisateur puisse donner sa réponse à la question.
+
+Ils ont développé la fonctionnalité de création de partie pour l'utilisateur avec un identifiant unique de partie et la possibilité de charger une partie existante en utilisant l'ID du jeu. Ils ont référencé les valeurs du dé et de l'avancement de la partie dans la base de données, et ont réussi à afficher une question de la base de données avec vérification de sa réponse. De plus, ils ont créé le dé avec JavaScript permettant de sortir un nombre aléatoire entre 1 et 6 et l'ont positionné au centre du plateau.
+
+Ils ont également effectué un premier test hors ligne pour la création d'un tableau avec JavaScript en vue des prochaines séances. Cependant, ils ont rencontré des problèmes de placement d'objets avec CSS, notamment sur la taille de ceux-ci, et ont eu des difficultés sur la création du plateau à l'aide de JavaScript (en développement mais pas présentable). Ils ont également rencontré des difficultés pour bien faire le fond d'écran de la page d'accueil, en raison des dimensions de l'image à respecter.
+
+Le Chercheur (SAID Wail Rachad) :
+
+Le chercheur a continué à apporter son soutien à l'équipe en fournissant des informations précieuses sur divers sujets liés au projet, tels que les options d'hébergement et les mesures de sécurité. Il a identifié plusieurs options d'hébergement gratuites, notamment Google Cloud (Firebase, Cloud Run), AWS (Amazon Web Services) et FreeHosting, et a expliqué les avantages et les inconvénients de chacune. Il a également exploré des moyens de sécuriser le site, tels que le chiffrement du fichier contenant les réponses pour les rendre inaccessibles aux joueurs.
+
+Le Responsable (GUERIN Raphael) :
+
+Le chef de projet a continué de superviser les progrès de l'équipe et de veiller à ce que les tâches soient terminées dans les délais impartis. Il a utilisé l'outil de gestion de tâches Monday pour assigner des tâches et surveiller les progrès. Il a guidé les codeurs et le chercheur au besoin et a apporté des ajustements au plan de projet au besoin. Dans l'ensemble, il a veillé à ce que le projet avance sans problème et de manière efficace.
+
+Source
+Firebase Auth :
+-https://firebase.google.com/docs/auth?hl=fr
+-Dev côté serveur:
+https://developer.mozilla.org/fr/docs/Learn/Server-side/First_steps/Introduction
+-CSSpadding:
+https://developer.mozilla.org/fr/docs/Web/CSS/padding
+-CSS float
+https://developer.mozilla.org/fr/docs/Web/CSS/float
+-Html input 
+https://developer.mozilla.org/fr/docs/Web/HTML/Element/input
+-Data firebase
+https://firebase.google.com/docs/firestore/manage-data/add-data?hl=fr#web-version-9_1
+-Retrieve Data Firebase
+https://firebase.google.com/docs/firestore/query-data/get-data?hl=fr
+-Bug firebase réso
+https://stackoverflow.com/questions/57941289/how-do-i-solve-error-failed-to-list-firebase-projects-see-firebase-debug-log
+-Tuto Firebase
+https://www.youtube.com/watch?v=x922y6F7wzo
+-Css Size
+https://developer.mozilla.org/fr/docs/Learn/CSS/Building_blocks/Sizing_items_in_CSS
