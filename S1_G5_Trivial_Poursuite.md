@@ -100,22 +100,41 @@ Le chef de projet a continué de superviser les progrès de l'équipe et de veil
 
 Source
 Firebase Auth :
+
 -https://firebase.google.com/docs/auth?hl=fr
+
 -Dev côté serveur:
+
 https://developer.mozilla.org/fr/docs/Learn/Server-side/First_steps/Introduction
+
 -CSSpadding:
+
 https://developer.mozilla.org/fr/docs/Web/CSS/padding
+
 -CSS float
+
 https://developer.mozilla.org/fr/docs/Web/CSS/float
+
 -Html input 
+
 https://developer.mozilla.org/fr/docs/Web/HTML/Element/input
+
 -Data firebase
+
 https://firebase.google.com/docs/firestore/manage-data/add-data?hl=fr#web-version-9_1
+
 -Retrieve Data Firebase
+
 https://firebase.google.com/docs/firestore/query-data/get-data?hl=fr
+
 -Bug firebase réso
+
 https://stackoverflow.com/questions/57941289/how-do-i-solve-error-failed-to-list-firebase-projects-see-firebase-debug-log
+
 -Tuto Firebase
+
 https://www.youtube.com/watch?v=x922y6F7wzo
+
 -Css Size
+
 https://developer.mozilla.org/fr/docs/Learn/CSS/Building_blocks/Sizing_items_in_CSS
