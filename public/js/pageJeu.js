@@ -5,13 +5,8 @@ var urlParams = new URLSearchParams(window.location.search);
 var idgame = urlParams.get("valeur");
 
 
-// Créer le code HTML des profils avec camnberts correspondant aux nombre de joueurs
 
-
-
-
-
-
+//Configuration des identifiants de connexion pour la bd de Firebase (Firestore).
 const firebaseConfig = {
   apiKey: "AIzaSyAspisnbtuq7zXqNyeFA0xfkRKPCwlKDXk",
   authDomain: "trivialpoursite.firebaseapp.com",
@@ -23,10 +18,9 @@ const firebaseConfig = {
   };
       
 
-// Utilisez firebaseConfig pour initialiser votre connexion Firestore
 
 
-// Initialise l'application Firebase
+// Initialisation de Firebase
 firebase.initializeApp(firebaseConfig);
 
 // Créez une référence à Firestore
@@ -40,8 +34,8 @@ function generateRandomMessage() {
 }
 
 
+//Récupere une question de la bd pour l'afficher ensuite
 const messagesCollection = firebase.firestore().collection('question');
-
 messagesCollection.doc('q1').get().then((doc) => {
   if (doc.exists) {
     // Affichez le message dans la balise <div>
@@ -53,6 +47,9 @@ messagesCollection.doc('q1').get().then((doc) => {
   console.log("Erreur lors de la lecture du document :", error);
 });
 
+
+
+//Verifie que la reponse saisie est la meme que celle de la question dans la bd
 function verifierReponse() {
   var repsaisie = document.getElementById("validationReponse").value;
   firebase.firestore().collection("question").doc("q1").get().then((doc) => {
@@ -73,6 +70,7 @@ function verifierReponse() {
 
 
 
+// Créer le code HTML des profils avec camnberts correspondant aux nombre de joueurs de la partie chargée
 firebase.firestore().collection('partie').doc(idgame).get()
   .then((doc) => {
     if (doc.exists) {
@@ -80,6 +78,7 @@ firebase.firestore().collection('partie').doc(idgame).get()
       const nbJoueurs = doc.data().nbjoueurs;
       console.log(nbJoueurs);  
       var codeHTML = '';
+// Créer le code HTML des profils avec camnberts correspondant aux nombre de joueurs de la partie chargée
 for (var i = 1; i <=  nbJoueurs; i++) {
   codeHTML += '<div class="rectangle">';
   codeHTML +=   '<span>Joueur ' + i + '</span>';
@@ -112,7 +111,7 @@ document.getElementById('joueurs-container').innerHTML = codeHTML;
 function changerDe() {
   var de = document.getElementById("de");
   var resultat = Math.floor(Math.random() * 6) + 1;
-
+//Stock la valeur du dé dans la bd 
   firebase.firestore().collection('partie').doc(idgame).update({
     de: resultat
     })
