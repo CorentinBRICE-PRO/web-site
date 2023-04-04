@@ -32,14 +32,14 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 700px;
-    width: 1400px;
+    height: 85vh;
+    width: 100vw;
   }
   /* attribut permettant de changer le design du bouton et ses parametres*/
   .play-button {
     background-color: transparent;
-    color: black;
-    font-size: 24px;
+    color: rgb(0, 0, 0);
+    font-size: 30px;
     padding: 16px 32px;
     border-radius: 8px;
     border: none;
