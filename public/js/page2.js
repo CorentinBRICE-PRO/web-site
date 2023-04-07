@@ -13,7 +13,6 @@ messagingSenderId: "934201717719",
 appId: "1:934201717719:web:77188c864e7bc443085192",
 measurementId: "G-KF17Q422EM"
 };
-    
 
 //Initialisation de Firebase
   

@@ -26,14 +26,6 @@ firebase.initializeApp(firebaseConfig);
 // Créez une référence à Firestore
 const db = firebase.firestore();
 
-// Fonction qui génère un message aléatoire
-function generateRandomMessage() {
-  const messages = ["Bonjour!", "Comment ça va?", "Je suis un message aléatoire", "Au revoir!"];
-  const randomIndex = Math.floor(Math.random() * messages.length);
-  return messages[randomIndex];
-}
-
-
 //Récupere une question de la bd pour l'afficher ensuite
 const messagesCollection = firebase.firestore().collection('question');
 messagesCollection.doc('q1').get().then((doc) => {

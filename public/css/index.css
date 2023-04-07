@@ -12,6 +12,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   
 }
  /*parametre de la page entière (la couleur de son fond)*/
@@ -32,13 +33,21 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 85vh;
+    height:125vh;
     width: 100vw;
+  }
+
+  .container2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    width: 150vw;
   }
   /* attribut permettant de changer le design du bouton et ses parametres*/
   .play-button {
     background-color: transparent;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 0, 0);
     font-size: 30px;
     padding: 16px 32px;
     border-radius: 8px;
@@ -46,3 +55,12 @@ html, body {
     cursor: pointer;
   }
   
+  .play-button2 {
+    background-color: transparent;
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+    padding: 16px 32px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+  }
