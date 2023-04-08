@@ -12,8 +12,18 @@ measurementId: "G-KF17Q422EM"
 };
 
 //Initialisation de Firebase
-  
 firebase.initializeApp(firebaseConfig);
+
+// Genere un id de game aleatire de 7 caracteres 
+function generationIdgameAleatoire() {
+    const charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let result = '';
+    for (let i = 0; i < 7; i++) {
+      result += charset.charAt(Math.floor(Math.random() * charset.length));
+    }
+    return result;
+  }
+  
 
 // Création d'un compte dans la base de donnée
 function signUpJoueur() {
@@ -25,6 +35,7 @@ function signUpJoueur() {
         email: Email,
         mdp: MotDePasse,
         pseudo: Pseudo,
+        idgame : generationIdgameAleatoire(),
     })
     .then(() => {
     //Redirection vers la page principale
