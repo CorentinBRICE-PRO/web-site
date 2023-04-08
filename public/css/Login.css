@@ -1,54 +1,95 @@
+
 body {
-    background-color: turquoise
-}
-.container {
+    background-color: turquoise;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    max-width: 15vw;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100vh;
+    margin: -10px 0 50px;
+}
 
-    margin: 0 auto;
-  }
-  
-  label {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
- 
-  input[type="text"] {
-    padding: 10px 32px;
-    font-size: 1rem;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    max-width: 100%;
-    box-sizing: border-box;
-  }
-  input[ type="password"] {
-    padding: 10px 32px;
-    font-size: 1rem;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    max-width: 100%;
-    box-sizing: border-box;
-  }
+.container {
+  position: relative;
+  overflow: hidden;
+  min-height: 500px;
+  width: 750px;
+  max-width: 100%;
+  border-radius: 10px;
+  background-color: beige;
+  box-shadow: 0 8px 24px rgb(0, 32, 64);
+}
 
-  
-  button.button-log {
-    height: 5vh;
-    width: 100%;
-    background-color: blue;
-    color: #fff;
-    border: none;
-    font-size: 24px;
-    border-radius: 8px;
+/* Le container pour la partie connexion et création */
+.form-container {
+  position: absolute;
+  top: 0;
+  height: 100%;
+}
 
-    margin-top: 1vh;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  button.button-log:hover {
-    background-color:green;
-  }
-  
+/* Creation */
+.sign-up-container {
+  left: 0;
+  width: 50%;
+}
+
+/* Connexion */
+.log-in-container {
+  right: 0;
+  width: 50%;
+}
+
+/* Le Format des deux formulaires */
+form {
+  background-color: beige;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 50px;
+  height: 100%;
+  text-align: center;
+}
+
+/* Les inputs */
+input {
+  background-color: aquamarine;
+  border: none;
+  padding: 10px 10px;
+  margin: 10px;
+  width: 100%;
+}
+
+/* Les boutons */
+button {
+  background-color: azure;
+  color: black;
+  border: 1px solid black;
+  font-size: medium;
+  padding: 10px 10px;
+  margin-top: 20px;
+  letter-spacing: 1px;
+  border-radius: 2px;
+  border-color: black;
+  transition: .2s ease-in-out; 
+}
+
+/* Animation du bouton lorsqu'on le survole */
+button:hover {
+  cursor: pointer;
+  background-color: aquamarine;
+  color: black;
+}
+
+/* Titre Connexion */
+h1 {
+  margin-bottom: 25px;
+  font-size: 40px;
+}
+
+/* Titre Créer un compte et J'ai deja un compte */
+h2 {
+  margin: 0;
+  font-size: 32px;
+}

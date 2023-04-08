@@ -32,20 +32,20 @@ for (var i = 0; i < (boutons.length-1); i++) {
 // Création de partie dans la Firestore
 function creerPartie() {
   // Recupere l'id de la partie saisie par l'utilisateur pour la creer dans la bd
-var newidgameSaisie = document.getElementById("newidgameSaisie").value;
-  // Atribution du nombre de joueur selectionné par l'utilisateur
-firebase.firestore().collection("partie").doc(newidgameSaisie).set({
-  de: 2,
-  nbjoueurs: valeurDuBouton,
-})
-.then(() => {
-  //Redirection vesr la page de jeu de la nouvelle partie créée
-  console.log("nbjoueur ajouté avec succès !");
-  window.location.href = "../html/pageJeu.html?valeur=" + newidgameSaisie;
-})
-.catch((error) => {
-  console.error("Erreur lors de l'ajout du document :", error);
-});
+  var newidgameSaisie = document.getElementById("newidgameSaisie").value;
+    // Atribution du nombre de joueur selectionné par l'utilisateur
+  firebase.firestore().collection("partie").doc(newidgameSaisie).set({
+    de: 2,
+    nbjoueurs: valeurDuBouton,
+  })
+  .then(() => {
+    //Redirection vesr la page de jeu de la nouvelle partie créée
+    console.log("nbjoueur ajouté avec succès !");
+    window.location.href = "../html/pageJeu.html?valeur=" + newidgameSaisie;
+  })
+  .catch((error) => {
+    console.error("Erreur lors de l'ajout du document :", error);
+  });
 }
 
 // Connexion a une partie deja existante dans la bd

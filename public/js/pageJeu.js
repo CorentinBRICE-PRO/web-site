@@ -117,4 +117,4 @@ function changerDe() {
 
   de.src = "../assets/images/de" + resultat + ".png";
 }
-  window.onload = updateValeur;
+  //window.onload = updateValeur;

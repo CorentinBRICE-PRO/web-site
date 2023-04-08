@@ -8,16 +8,40 @@
   <meta charset="UTF-8">
   <title>Login</title>
   <link rel="stylesheet" href="../css/Login.css">
+  <link rel="shortcut icon" href="../assets/images/backgroundaccueil.jpg" type="image/x-icon">
 </head>
 
 <body>
-
-    <div class="container">
-        <label for="">Login</label>
-        <input type="text" id="idJoueur"  name="Identifiant"   placeholder="Identifiant">
-        <input type="password" id="mdp" name="Mots de passe" placeholder="Mots de passe">
-        <button class="button-log" onclick="loginJoueur()">Login</button>
-      </div>
+  <h1>Connexion</h1>
+  <!--Ajout de la Connexion sur le site-->
+  <div class="container">
+    <!--Permet de Créer un nouveau compte-->
+    <div class="form-container sign-up-container">
+      <form action="#">
+        <h2>Créer un compte</h2>
+        <input type="text" id="Pseudo" placeholder="Nom/Pseudo">
+        <input type="email" id="email-signup" placeholder="Email">
+        <input type="password" id="mdp-signup" placeholder="Mot de passe">
+        <button class="button-sign" onclick="signUpJoueur()">Creer le compte</button>
+      </form>
+    </div>
+    <!--Permet de se connecter si on possède déjà un compte-->
+    <div class="form-container log-in-container">
+      <form action="#">
+        <h2>J'ai déjà un compte</h2>
+        <input type="email" id="email-login" placeholder="Email">
+        <input type="password" id="mdp-login" placeholder="Mot de passe">
+        <button class="button-log" onclick="loginJoueur()">Se Connecter</button>
+      </form>
+    </div>
+  </div>
+  
+  <!--div class="container">
+    <label for="">Login</label>
+    <input type="text" id="idJoueur"  name="Identifiant"   placeholder="Identifiant">
+    <input type="password" id="mdp" name="Mots de passe" placeholder="Mots de passe">
+    <button class="button-log" onclick="loginJoueur()">Login</button>
+  </div-->
       
 
 </body>
