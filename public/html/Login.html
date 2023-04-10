@@ -20,7 +20,7 @@
     <div class="form-container sign-up-container">
       <form action="#">
         <h2>Créer un compte</h2>
-        <div class="alert" id="alert">
+        <div class="alert" id="alert-signup">
           Ce Pseudo existe déja. Veuillez réessayer.
           <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
         </div> 
@@ -34,6 +34,10 @@
     <div class="form-container log-in-container">
       <form action="#">
         <h2>J'ai déjà un compte</h2>
+        <div class="alert" id="alert-login">
+          Ce Pseudo existe déja. Veuillez réessayer.
+          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        </div> 
         <input type="email" id="email-login" placeholder="Email">
         <input type="password" id="mdp-login" placeholder="Mot de passe">
         <button class="button-log" onclick="loginJoueur()">Se Connecter</button>
