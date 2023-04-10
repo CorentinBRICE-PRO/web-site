@@ -14,6 +14,9 @@ measurementId: "G-KF17Q422EM"
 //Initialisation de Firebase
 firebase.initializeApp(firebaseConfig);
 
+var alertbox = document.getElementById("alert");
+alertbox.style.display = "none";
+
 // Genere un id de game aleatire de 7 caracteres 
 function generationIdgameAleatoire() {
     const charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -30,21 +33,36 @@ function signUpJoueur() {
     var Pseudo = document.getElementById("Pseudo").value;
     var Email = document.getElementById("email-signup").value;
     var MotDePasse = document.getElementById("mdp-signup").value;
-    // Atribution de toutes les informations tapé par l'utilisateur
-    firebase.firestore().collection("Login").doc(Pseudo).set({
-        email: Email,
-        mdp: MotDePasse,
-        pseudo: Pseudo,
-        idgame : generationIdgameAleatoire(),
+
+    var docref = firebase.firestore().collection("Login").doc(Pseudo);
+
+    docref.get().then((pseudo) => {
+        if (pseudo.exists) {
+            docref.onSnapshot((doc) => {
+                console.log("Le compte exite déjà !!!");
+                
+                alertbox.style.display = "block";
+            });
+        } else {
+            // Atribution de toutes les informations tapé par l'utilisateur
+            firebase.firestore().collection("Login").doc(Pseudo).set({
+                email: Email,
+                mdp: MotDePasse,
+                pseudo: Pseudo,
+                idgame : generationIdgameAleatoire(),
+            })
+            .then(() => {
+            //Redirection vers la page principale
+            console.log("Compte créer avec succès !");
+            window.location.href = "../index.html";
+            })
+            .catch((error) => {
+            console.error("Erreur lors de l'ajout du document :", error);
+            });
+        }
     })
-    .then(() => {
-    //Redirection vers la page principale
-    console.log("Compte créer avec succès !");
-    window.location.href = "../index.html";
-    })
-    .catch((error) => {
-    console.error("Erreur lors de l'ajout du document :", error);
-    });
+
+    
 }
 
 // Connexion a une partie deja existante dans la bd
