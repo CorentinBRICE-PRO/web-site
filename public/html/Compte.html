@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Ajout de Firebase -->
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
+  <meta charset="UTF-8">
+  <title>Compte</title>
+  <link rel="stylesheet" href="../css/compte.css">
+  <link rel="shortcut icon" href="../assets/images/backgroundaccueil.jpg" type="image/x-icon">
+</head>
+
+<body>
+
+    <h1>Compte</h1>
+    <div class="container">
+        <div class="compte" id="compte">
+            Pseudo
+        </div>
+        <!--Permet de Créer un nouveau compte-->
+        <div class="form-container new-game-container">
+          <form>
+            <h2>New Game</h2>
+            <button type="button" class="button-sign" onclick="">Charger la partie</button>
+          </form>
+        </div> 
+        <div class="form-container old-game-container">
+            <form>
+              <h2>Continue Game</h2>
+              <div class="existing-old-game" id="existing">
+              </div>
+                <button class="button-log" onclick="logPartie()">Lancer la partie</button>
+            </form>
+          </div>
+        </div>
+</body>
+
+<script src="../js/compte.js"></script>
+
+</html>
