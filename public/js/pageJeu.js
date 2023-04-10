@@ -66,7 +66,7 @@ function verifierReponse() {
 firebase.firestore().collection('partie').doc(idgame).get()
   .then((doc) => {
     if (doc.exists) {
-      toto =doc.data().nbjoueurs;
+      toto = doc.data().nbjoueurs;
       const nbJoueurs = doc.data().nbjoueurs;
       console.log(nbJoueurs);  
       var codeHTML = '';

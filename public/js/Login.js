@@ -39,7 +39,7 @@ function signUpJoueur() {
     var Email = document.getElementById("email-signup").value;
     var MotDePasse = document.getElementById("mdp-signup").value;
 
-    // Vérifie si il y a un pseudo dans le chanmp Pseudo/Nom
+    // Vérifie si il y a un pseudo dans le champ Pseudo/Nom
     if (Pseudo) {
         var docref = firebase.firestore().collection("Login").doc(Pseudo);
 
@@ -105,7 +105,7 @@ function loginJoueur() {
             if (doc.exists && doc.get("email") === Email) {
                 if (doc.get("mdp") === idmdp) {
                     const idgame = doc.data().idgame;
-                    window.location.href = "../html/pageJeu.html?valeur=" + idgame ;
+                    window.location.href = "../html/Compte.html?valeur=" + doc.get("pseudo") ;
                     console.log("Connexion reussi ", idgame);
                 }
                 else {
@@ -131,4 +131,4 @@ function loginJoueur() {
 function validateEmail(email) {
     var re = /\S+@\S+\.\S+/;
     return re.test(email);
-  }
+}
