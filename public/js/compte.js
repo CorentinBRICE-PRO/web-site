@@ -38,5 +38,6 @@ firebase.firestore().collection("partie").get().then((querySnapshot) => {
 });
 
 function logPartie() {
+    console.log("Clicking" + idGamePlayer);
     window.location.href = "../html/pageJeu.html?valeur=admin";
 }
