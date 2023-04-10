@@ -30,39 +30,56 @@ function generationIdgameAleatoire() {
 
 // Création d'un compte dans la base de donnée
 function signUpJoueur() {
+    alertbox.style.display = "none";
+
     var Pseudo = document.getElementById("Pseudo").value;
     var Email = document.getElementById("email-signup").value;
     var MotDePasse = document.getElementById("mdp-signup").value;
 
-    var docref = firebase.firestore().collection("Login").doc(Pseudo);
+    // Vérifie si il y a un pseudo dans le chanmp Pseudo/Nom
+    if (Pseudo) {
+        var docref = firebase.firestore().collection("Login").doc(Pseudo);
 
-    docref.get().then((pseudo) => {
-        if (pseudo.exists) {
-            docref.onSnapshot((doc) => {
-                console.log("Le compte exite déjà !!!");
+        docref.get().then((pseudo) => {
+            // Va chercher dans la BDD si le pseudo existe déjà
+            if (pseudo.exists) {
+                docref.onSnapshot((doc) => {
+                    // Affiche un message d'erreur.
+                    //console.log("Le compte exite déjà !!!");
+                    alertbox.firstChild.textContent = "Ce Pseudo existe déja. Veuillez réessayer.";
+                    alertbox.style.display = "block";
+                });
+            } else {
+                // Vérifie si il y a un champ mot de Passe et Email
+                if ( Email && MotDePasse) {
+                    // Atribution de toutes les informations tapé par l'utilisateur
+                    firebase.firestore().collection("Login").doc(Pseudo).set({
+                        email: Email,
+                        mdp: MotDePasse,
+                        pseudo: Pseudo,
+                        idgame : generationIdgameAleatoire(),
+                    })
+                    .then(() => {
+                    //Redirection vers la page principale
+                    console.log("Compte créer avec succès !");
+                    window.location.href = "../index.html";
+                    })
+                    .catch((error) => {
+                    console.error("Erreur lors de l'ajout du document :", error);
+                    });
+                } else {
+                    // Affiche un message d'erreur
+                    alertbox.firstChild.textContent = "Vous n'avez pas renseigné votre Email ou Mot de passe";
+                    alertbox.style.display = "block";
+                }
                 
-                alertbox.style.display = "block";
-            });
-        } else {
-            // Atribution de toutes les informations tapé par l'utilisateur
-            firebase.firestore().collection("Login").doc(Pseudo).set({
-                email: Email,
-                mdp: MotDePasse,
-                pseudo: Pseudo,
-                idgame : generationIdgameAleatoire(),
-            })
-            .then(() => {
-            //Redirection vers la page principale
-            console.log("Compte créer avec succès !");
-            window.location.href = "../index.html";
-            })
-            .catch((error) => {
-            console.error("Erreur lors de l'ajout du document :", error);
-            });
-        }
-    })
-
-    
+            }
+        })
+    } else {
+        // Affiche un autre message d'erreur.
+        alertbox.firstChild.textContent = "Vous n'avez pas mis de Pseudo";
+        alertbox.style.display = "block";
+    } 
 }
 
 // Connexion a une partie deja existante dans la bd
