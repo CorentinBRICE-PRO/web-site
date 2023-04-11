@@ -62,42 +62,56 @@ function verifierReponse() {
 
 
 
-// Créer le code HTML des profils avec camnberts correspondant aux nombre de joueurs de la partie chargée
 firebase.firestore().collection('partie').doc(idgame).get()
   .then((doc) => {
     if (doc.exists) {
-      toto = doc.data().nbjoueurs;
       const nbJoueurs = doc.data().nbjoueurs;
-      console.log(nbJoueurs);  
-      var codeHTML = '';
-// Créer le code HTML des profils avec camnberts correspondant aux nombre de joueurs de la partie chargée
-for (var i = 1; i <=  nbJoueurs; i++) {
-  codeHTML += '<div class="rectangle">';
-  codeHTML +=   '<span>Joueur ' + i + '</span>';
-  codeHTML +=   '<div class="camenbert">';
-  codeHTML +=     '<div class="part part-1"></div>';
-  codeHTML +=     '<div class="part part-2"></div>';
-  codeHTML +=     '<div class="part part-3"></div>';
-  codeHTML +=     '<div class="part part-4"></div>';
-  codeHTML +=     '<div class="part part-5"></div>';
-  codeHTML +=     '<div class="part part-6"></div>';
-  codeHTML +=     '<div class="line line1"></div>';
-  codeHTML +=     '<div class="line line2"></div>';
-  codeHTML +=     '<div class="line line3"></div>';
-  codeHTML +=   '</div>';
-  codeHTML +=   '</div>';
 
-}
-// Insérer le code HTML dans la page jeu
-document.getElementById('joueurs-container').innerHTML = codeHTML;
-    } else {
-      console.log("Le document n'existe pas !");
+      let codeHTML = '';
+
+      // Créer le code HTML des profils avec camemberts correspondant au nombre de joueurs de la partie chargée
+      for (let i = 1; i <= nbJoueurs; i++) {
+        const joueurRef = doc.ref.collection('Joueurs').doc(`Joueur${i}`);
+
+        joueurRef.get().then((joueurDoc) => {
+          if (joueurDoc.exists) {
+            const couleur1 = joueurDoc.data().bleu || false;
+            const couleur2 = joueurDoc.data().rouge || false;
+            const couleur3 = joueurDoc.data().vert || false;
+            const couleur4 = joueurDoc.data().jaune || false;
+            const couleur5 = joueurDoc.data().violet || false;
+            const couleur6 = joueurDoc.data().orange || false;
+
+          codeHTML += `
+            <div class="rectangle">
+              <span>Joueur ${i}</span>
+              <div class="camembert">
+                <div class="part part-1" style="background-color: ${couleur1 ? 'blue' : 'black'};"></div>
+                <div class="part part-2" style="background-color: ${couleur2 ? 'red' : 'black'};"></div>
+                <div class="part part-3" style="background-color: ${couleur3 ? 'green' : 'black'};"></div>
+                <div class="part part-4" style="background-color: ${couleur4 ? 'yellow' : 'black'};"></div>
+                <div class="part part-5" style="background-color: ${couleur5 ? 'purple' : 'black'};"></div>
+                <div class="part part-6" style="background-color: ${couleur6 ? 'orange' : 'black'};"></div>
+                <div class="line line1"></div>
+                <div class="line line2"></div>
+                <div class="line line3"></div>
+              </div>
+            </div>
+          `;
+          document.getElementById('joueurs-container').innerHTML = codeHTML;
+          // Ajouter le code HTML généré au document HTML
+          
+         } else {
+            console.log(`Le document Joueur${i} n'existe pas.`);
+          }
+        });
+      }
     }
-  })
-  .catch((error) => {
-    console.log("Erreur lors de la récupération du document : ", error);
-  });
+  }); 
 
+// Insérer le code HTML dans la page jeu
+
+   
 
 // Genere aleatoirement une face d'un dé
 function changerDe() {
