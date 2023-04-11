@@ -119,27 +119,34 @@ function changerDe() {
 }
 
 
+let colors = ['bleu', 'orange', 'rose', 'vert', 'cyan)', 'marron', 'violet', 'rouge'];
+
 let container = document.querySelector(".container");
-let btn = document.getElementById("spin");
 let arrow = document.querySelector(".arrow");
-let colors = ['rgb(63, 81, 181)', 'rgb(255, 152, 0)', 'rgb(233, 30, 99)', 'rgb(76, 175, 80)', 'rgb(0, 150, 136)', 'rgb(121, 85, 72)', 'rgb(156, 39, 176)', 'rgb(244, 67, 54)'];
-let winningColor = "";
+let btn = document.getElementById("spin");
+let winningColor;
+
+let currentRotation = 0; // stocke l'angle de rotation actuel
 
 btn.onclick = function() {
   // Choisir une couleur aléatoire
   let randomIndex = Math.floor(Math.random() * colors.length);
   winningColor = colors[randomIndex];
 
-  // Tourner la roue jusqu'à ce que la couleur gagnante pointe vers le haut
-  let currentRotation = getCurrentRotation(container);
-  let rotation = 382 - (randomIndex * 45 + 22.5) - currentRotation % 360;
-  let rotationStr = "rotate(" + (currentRotation + rotation) + "deg)";
-  container.style.transform = rotationStr;
+  // Calculer l'angle de rotation pour faire pointer la couleur gagnante vers le haut
+  let rotation = 720+382 - (randomIndex * 45 + 22.5) - currentRotation % 360;
+
+  // Ajouter le nouvel angle à l'angle de rotation actuel
+  currentRotation += rotation;
+
+  // Mettre à jour l'attribut "style" de la roue
+  container.style.transform = "rotate(" + currentRotation + "deg)";
   arrow.style.transform = "rotate(" + rotation + "deg)";
 
   // Afficher la couleur gagnante dans la console
   console.log("Couleur gagnante : " + winningColor);
 };
+
 
 // Fonction pour récupérer l'angle de rotation actuel de la roue
 function getCurrentRotation(el) {
