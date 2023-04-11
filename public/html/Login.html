@@ -18,7 +18,7 @@
   <div class="container">
     <!--Permet de Créer un nouveau compte-->
     <div class="form-container sign-up-container">
-      <form action="#">
+      <form >
         <h2>Créer un compte</h2>
         <div class="alert" id="alert-signup">
           Ce Pseudo existe déja. Veuillez réessayer.
@@ -32,7 +32,7 @@
     </div>
     <!--Permet de se connecter si on possède déjà un compte-->
     <div class="form-container log-in-container">
-      <form action="#">
+      <form>
         <h2>J'ai déjà un compte</h2>
         <div class="alert" id="alert-login">
           Ce Pseudo existe déja. Veuillez réessayer.
@@ -40,7 +40,7 @@
         </div> 
         <input type="email" id="email-login" placeholder="Email">
         <input type="password" id="mdp-login" placeholder="Mot de passe">
-        <button class="button-log" onclick="loginJoueur()">Se Connecter</button>
+        <button type="button" class="button-log" onclick="loginJoueur()">Se Connecter</button>
       </form>
     </div>
   </div>

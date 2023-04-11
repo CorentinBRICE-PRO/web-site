@@ -121,10 +121,49 @@ function changerDe() {
 
 let container = document.querySelector(".container");
 let btn = document.getElementById("spin");
-let number = Math.ceil(Math.random() * 1000);
+let arrow = document.querySelector(".arrow");
+let colors = ['rgb(63, 81, 181)', 'rgb(255, 152, 0)', 'rgb(233, 30, 99)', 'rgb(76, 175, 80)', 'rgb(0, 150, 136)', 'rgb(121, 85, 72)', 'rgb(156, 39, 176)', 'rgb(244, 67, 54)'];
+let winningColor = "";
 
-btn.onclick = function () {
-	container.style.transform = "rotate(" + number + "deg)";
-	number += Math.ceil(Math.random() * 1000);
+btn.onclick = function() {
+  // Choisir une couleur aléatoire
+  let randomIndex = Math.floor(Math.random() * colors.length);
+  winningColor = colors[randomIndex];
+
+  // Tourner la roue jusqu'à ce que la couleur gagnante pointe vers le haut
+  let currentRotation = getCurrentRotation(container);
+  let rotation = 382 - (randomIndex * 45 + 22.5) - currentRotation % 360;
+  let rotationStr = "rotate(" + (currentRotation + rotation) + "deg)";
+  container.style.transform = rotationStr;
+  arrow.style.transform = "rotate(" + rotation + "deg)";
+
+  // Afficher la couleur gagnante dans la console
+  console.log("Couleur gagnante : " + winningColor);
+};
+
+// Fonction pour récupérer l'angle de rotation actuel de la roue
+function getCurrentRotation(el) {
+  var st = window.getComputedStyle(el, null);
+  var tr = st.getPropertyValue("-webkit-transform") ||
+           st.getPropertyValue("-moz-transform") ||
+           st.getPropertyValue("-ms-transform") ||
+           st.getPropertyValue("-o-transform") ||
+           st.getPropertyValue("transform") ||
+           "none";
+  if (tr !== "none") {
+    var values = tr.split("(")[1].split(")")[0].split(",");
+    var a = values[0];
+    var b = values[1];
+    var radians = Math.atan2(b, a);
+    if (radians < 0) {
+      radians += (2 * Math.PI);
+    }
+    var angle = Math.round(radians * (180 / Math.PI));
+  } else {
+    var angle = 0;
+  }
+  return angle;
 }
+
+
   //window.onload = updateValeur;
