@@ -34,6 +34,19 @@ function creerPartie() {
   // Recupere l'id de la partie saisie par l'utilisateur pour la creer dans la bd
   var newidgameSaisie = document.getElementById("newidgameSaisie").value;
     // Atribution du nombre de joueur selectionné par l'utilisateur
+
+    for (let i = 1; i <= valeurDuBouton; i++) {
+      firebase.firestore().collection("partie").doc(newidgameSaisie).collection("Joueurs").doc(`Joueur${i}`).set({
+        nom: `Joueur ${i}`,
+        bleu: true,
+        jaune : false,
+        rouge : true,
+        vert : false,
+        orange : false,
+        violet: false,
+        
+      });
+    }
   firebase.firestore().collection("partie").doc(newidgameSaisie).set({
     de: 2,
     nbjoueurs: valeurDuBouton,
