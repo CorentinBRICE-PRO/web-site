@@ -61,19 +61,19 @@ function verifierReponse() {
 
 
 
-
 firebase.firestore().collection('partie').doc(idgame).get()
   .then((doc) => {
     if (doc.exists) {
       const nbJoueurs = doc.data().nbjoueurs;
+      const promises = []; // Tableau de promesses pour attendre que toutes les promesses d'accès à la BD soient résolues
+      const joueursHTML = []; // Tableau pour stocker le code HTML généré pour chaque joueur
 
-      let codeHTML = '';
-
-      // Créer le code HTML des profils avec camemberts correspondant au nombre de joueurs de la partie chargée
+      // Parcourir tous les joueurs de la partie chargée
       for (let i = 1; i <= nbJoueurs; i++) {
         const joueurRef = doc.ref.collection('Joueurs').doc(`Joueur${i}`);
 
-        joueurRef.get().then((joueurDoc) => {
+        // Ajouter la promesse d'accès à la BD au tableau de promesses
+        promises.push(joueurRef.get().then((joueurDoc) => {
           if (joueurDoc.exists) {
             const couleur1 = joueurDoc.data().bleu || false;
             const couleur2 = joueurDoc.data().rouge || false;
@@ -81,33 +81,40 @@ firebase.firestore().collection('partie').doc(idgame).get()
             const couleur4 = joueurDoc.data().jaune || false;
             const couleur5 = joueurDoc.data().violet || false;
             const couleur6 = joueurDoc.data().orange || false;
+           // const nom = joueurDoc.data().nom;
 
-          codeHTML += `
-            <div class="rectangle">
-              <span>Joueur ${i}</span>
-              <div class="camembert">
-                <div class="part part-1" style="background-color: ${couleur1 ? 'blue' : 'black'};"></div>
-                <div class="part part-2" style="background-color: ${couleur2 ? 'red' : 'black'};"></div>
-                <div class="part part-3" style="background-color: ${couleur3 ? 'green' : 'black'};"></div>
-                <div class="part part-4" style="background-color: ${couleur4 ? 'yellow' : 'black'};"></div>
-                <div class="part part-5" style="background-color: ${couleur5 ? 'purple' : 'black'};"></div>
-                <div class="part part-6" style="background-color: ${couleur6 ? 'orange' : 'black'};"></div>
-                <div class="line line1"></div>
-                <div class="line line2"></div>
-                <div class="line line3"></div>
+            // Ajouter le code HTML généré pour chaque joueur dans le tableau joueursHTML
+            joueursHTML[i - 1] = `
+              <div class="rectangle">
+                <span>Joueur${i}</span>
+                <div class="camenbert">
+                  <div class="part part-1" style="background-color: ${couleur1 ? 'blue' : 'black'};"></div>
+                  <div class="part part-2" style="background-color: ${couleur2 ? 'red' : 'black'};"></div>
+                  <div class="part part-3" style="background-color: ${couleur3 ? 'green' : 'black'};"></div>
+                  <div class="part part-4" style="background-color: ${couleur4 ? 'yellow' : 'black'};"></div>
+                  <div class="part part-5" style="background-color: ${couleur5 ? 'purple' : 'black'};"></div>
+                  <div class="part part-6" style="background-color: ${couleur6 ? 'orange' : 'black'};"></div>
+                  <div class="line line1"></div>
+                  <div class="line line2"></div>
+                  <div class="line line3"></div>
+                </div>
               </div>
-            </div>
-          `;
-          document.getElementById('joueurs-container').innerHTML = codeHTML;
-          // Ajouter le code HTML généré au document HTML
-          
-         } else {
+            `;
+          } else {
             console.log(`Le document Joueur${i} n'existe pas.`);
           }
-        });
+        }));
       }
+
+      // Attendre que toutes les promesses d'accès à la BD soient résolues avant d'ajouter le code HTML généré au document HTML
+      Promise.all(promises).then(() => {
+        // Ajouter le code HTML généré pour tous les joueurs au document HTML
+        document.getElementById('joueurs-container').innerHTML = joueursHTML.join('');
+      });
     }
-  }); 
+  });
+
+
 
 // Insérer le code HTML dans la page jeu
 
