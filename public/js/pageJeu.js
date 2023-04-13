@@ -48,6 +48,7 @@ function verifierReponse() {
     if (doc.exists) {
       if (doc.data().rep === repsaisie) {
         console.log("La réponse est vraie");
+        alert("Bonne réponse !");
       } else {
         console.log("La réponse est fausse");
       }
