@@ -89,12 +89,12 @@ firebase.firestore().collection('partie').doc(idgame).get()
               <div class="rectangle">
                 <span>Joueur${i}</span>
                 <div class="camenbert">
-                  <div class="part part-1" style="background-color: ${couleur1 ? 'blue' : 'black'};"></div>
-                  <div class="part part-2" style="background-color: ${couleur2 ? 'red' : 'black'};"></div>
-                  <div class="part part-3" style="background-color: ${couleur3 ? 'green' : 'black'};"></div>
-                  <div class="part part-4" style="background-color: ${couleur4 ? 'yellow' : 'black'};"></div>
-                  <div class="part part-5" style="background-color: ${couleur5 ? 'purple' : 'black'};"></div>
-                  <div class="part part-6" style="background-color: ${couleur6 ? 'orange' : 'black'};"></div>
+                  <div class="part part-1" style="background-color: ${couleur1 ? 'blue' : 'white'};"></div>
+                  <div class="part part-2" style="background-color: ${couleur2 ? 'red' : 'white'};"></div>
+                  <div class="part part-3" style="background-color: ${couleur3 ? 'green' : 'white'};"></div>
+                  <div class="part part-4" style="background-color: ${couleur4 ? 'yellow' : 'white'};"></div>
+                  <div class="part part-5" style="background-color: ${couleur5 ? 'purple' : 'white'};"></div>
+                  <div class="part part-6" style="background-color: ${couleur6 ? 'orange' : 'white'};"></div>
                   <div class="line line1"></div>
                   <div class="line line2"></div>
                   <div class="line line3"></div>
@@ -141,7 +141,7 @@ function changerDe() {
 }
 
 
-let colors = ['bleu', 'orange', 'rose', 'vert', 'cyan)', 'marron', 'violet', 'rouge'];
+let colors = ['bleu', 'orange', 'rose', 'vert', 'cyan', 'marron', 'violet', 'rouge'];
 
 let container = document.querySelector(".container");
 let arrow = document.querySelector(".arrow");
@@ -167,6 +167,11 @@ btn.onclick = function() {
 
   // Afficher la couleur gagnante dans la console
   console.log("Couleur gagnante : " + winningColor);
+
+  setTimeout(function(){
+    alert("Couleur gagnante : " + winningColor);
+}, 5000);
+  
 };
 
 
