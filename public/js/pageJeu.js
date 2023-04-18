@@ -4,6 +4,9 @@
 var urlParams = new URLSearchParams(window.location.search);
 var idgame = urlParams.get("valeur");
 let couleurEncours = "undefined"
+console.log(typeof Symbol() === 'symbol' ? 'ES6+' : 'ES5');
+
+
 
 
 
@@ -15,8 +18,9 @@ const firebaseConfig = {
   storageBucket: "trivialpoursite.appspot.com",
   messagingSenderId: "934201717719",
   appId: "1:934201717719:web:77188c864e7bc443085192",
-  measurementId: "G-KF17Q422EM"
-  };
+  measurementId: "G-KF17Q422EM",
+  databaseURL: "https://trivialpoursite-default-rtdb.europe-west1.firebasedatabase.app"
+};
       
 
 
@@ -27,20 +31,24 @@ firebase.initializeApp(firebaseConfig);
 // Créez une référence à Firestore
 const db = firebase.firestore();
 
-//Récupere une question de la bd pour l'afficher ensuite
-const messagesCollection = firebase.firestore().collection('question');
-messagesCollection.doc('q1').get().then((doc) => {
-  if (doc.exists) {
-    // Affichez le message dans la balise <div>
-    document.getElementById('message').textContent = doc.data().question;
-  } else {
-    console.log("Le document n'existe pas !");
-  }
-}).catch((error) => {
+// Récupérez une référence à la collection "question".
+firebase.database().ref('question/q1');
+
+// Écoutez les modifications apportées à la référence .
+firebase.database().ref('question/q1').on('value', (snapshot) => {
+  const question = snapshot.val().question;
+  document.getElementById('message').textContent = question;
+}, (error) => {
   console.log("Erreur lors de la lecture du document :", error);
-});
-
-
+})
+const dbRef = firebase.database().ref('partie/admin/Joueurs/Joueur1');
+  dbRef.update({ bleu: false })
+    .then(() => {
+      console.log("Mise à jour réussie !");
+    })
+    .catch((error) => {
+      console.log("Erreur lors de la mise à jour :", error);
+    });
 
 //Verifie que la reponse saisie est la meme que celle de la question dans la bd
 function verifierReponse() {
