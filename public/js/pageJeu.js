@@ -3,6 +3,7 @@
 //  de la valeur du paramètre "valeur" dans l'URL qui correspond au nombre de joueur
 var urlParams = new URLSearchParams(window.location.search);
 var idgame = urlParams.get("valeur");
+let couleurEncours = "undefined"
 
 
 
@@ -49,16 +50,64 @@ function verifierReponse() {
       if (doc.data().rep === repsaisie) {
         console.log("La réponse est vraie");
         alert("Bonne réponse !");
-      } else {
+        mettreAJourCouleurJoueur(idgame,"4", couleurEncours);
+        console.log("test apres function");
+      } 
+      else {
         console.log("La réponse est fausse");
       }
-    } else {
+    }
+    else {
       console.log("Le document n'existe pas.");
     }
   }).catch((error) => {
     console.log("Erreur lors de la récupération du document : ", error);
   });
 }
+
+
+
+
+
+
+
+function mettreAJourCouleurJoueur(idgame, joueurEnCours, couleur) {
+  const db = firebase.firestore();
+  const partieRef = db.collection("partie").doc(idgame);
+
+  // Récupérer les informations de la partie
+  partieRef.get().then((doc) => {
+    if (doc.exists) {
+      const joueursRef = partieRef.collection("Joueurs");
+
+      // Vérifier si c'est le tour du joueur en question
+      if ("4" === joueurEnCours) {
+        // Mettre à jour le champ "couleur" pour le joueur en question
+          const joueurRef = joueursRef.doc(`Joueur${joueurEnCours}`);
+          joueurRef.update({ [couleur]: true })
+            .then(() => {
+              console.log(couleurEncours+`Le champ 'couleur' a été mis à jour pour le joueur ${joueurEnCours} avec succès !`);
+            })
+            .catch((error) => {
+              console.error(`Erreur lors de la mise à jour du champ 'couleur' pour le joueur ${joueurEnCours}:`, error);
+            });
+       
+      } else {
+        console.error(`Ce n'est pas au tour du joueur ${joueurEnCours} de jouer !`);
+      }
+    } else {
+      console.error(`La partie '${idgame}' n'existe pas !`);
+    }
+  }).catch((error) => {
+    console.error("Erreur lors de la récupération de la partie:", error);
+  });
+}
+
+
+
+
+
+
 
 
 
@@ -171,6 +220,8 @@ btn.onclick = function() {
   setTimeout(function(){
     alert("Couleur gagnante : " + winningColor);
 }, 5000);
+
+couleurEncours =  winningColor
   
 };
 
