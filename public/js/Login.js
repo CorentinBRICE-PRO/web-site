@@ -39,6 +39,11 @@ function signUpJoueur() {
     var Email = document.getElementById("email-signup").value;
     var MotDePasse = document.getElementById("mdp-signup").value;
 
+    // Utiliser DOMPurify pour nettoyer la valeur de pseudo/Email/Motdepasse
+    pseudo = DOMPurify.sanitize(pseudo);
+    Email = DOMPurify.sanitize(Email);
+    MotDePasse = DOMPurify.sanitize(MotDePasse);
+
     // Vérifie si il y a un pseudo dans le champ Pseudo/Nom
     if (Pseudo) {
         var docref = firebase.firestore().collection("Login").doc(Pseudo);
