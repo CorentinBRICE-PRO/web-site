@@ -3,7 +3,7 @@
 //  de la valeur du paramètre "valeur" dans l'URL qui correspond au nombre de joueur
 var urlParams = new URLSearchParams(window.location.search);
 var idgame = urlParams.get("valeur");
-let couleurEncours = "undefined"
+var couleurEncours = "undefined"
 console.log(typeof Symbol() === 'symbol' ? 'ES6+' : 'ES5');
 
 
@@ -28,174 +28,8 @@ const firebaseConfig = {
 // Initialisation de Firebase
 firebase.initializeApp(firebaseConfig);
 
-// Créez une référence à Firestore
-const db = firebase.firestore();
-
-// Récupérez une référence à la collection "question".
-firebase.database().ref('question/q1');
-
-// Écoutez les modifications apportées à la référence .
-firebase.database().ref('question/q1').on('value', (snapshot) => {
-  const question = snapshot.val().question;
-  document.getElementById('message').textContent = question;
-}, (error) => {
-  console.log("Erreur lors de la lecture du document :", error);
-})
-const dbRef = firebase.database().ref('partie/admin/Joueurs/Joueur1');
-  dbRef.update({ bleu: false })
-    .then(() => {
-      console.log("Mise à jour réussie !");
-    })
-    .catch((error) => {
-      console.log("Erreur lors de la mise à jour :", error);
-    });
-
-//Verifie que la reponse saisie est la meme que celle de la question dans la bd
-function verifierReponse() {
-  var repsaisie = document.getElementById("validationReponse").value;
-  firebase.firestore().collection("question").doc("q1").get().then((doc) => {
-    if (doc.exists) {
-      if (doc.data().rep === repsaisie) {
-        console.log("La réponse est vraie");
-        alert("Bonne réponse !");
-        mettreAJourCouleurJoueur(idgame,"4", couleurEncours);
-        console.log("test apres function");
-      } 
-      else {
-        console.log("La réponse est fausse");
-      }
-    }
-    else {
-      console.log("Le document n'existe pas.");
-    }
-  }).catch((error) => {
-    console.log("Erreur lors de la récupération du document : ", error);
-  });
-}
 
 
-
-
-
-
-
-function mettreAJourCouleurJoueur(idgame, joueurEnCours, couleur) {
-  const db = firebase.firestore();
-  const partieRef = db.collection("partie").doc(idgame);
-
-  // Récupérer les informations de la partie
-  partieRef.get().then((doc) => {
-    if (doc.exists) {
-      const joueursRef = partieRef.collection("Joueurs");
-
-      // Vérifier si c'est le tour du joueur en question
-      if ("4" === joueurEnCours) {
-        // Mettre à jour le champ "couleur" pour le joueur en question
-          const joueurRef = joueursRef.doc(`Joueur${joueurEnCours}`);
-          joueurRef.update({ [couleur]: true })
-            .then(() => {
-              console.log(couleurEncours+`Le champ 'couleur' a été mis à jour pour le joueur ${joueurEnCours} avec succès !`);
-            })
-            .catch((error) => {
-              console.error(`Erreur lors de la mise à jour du champ 'couleur' pour le joueur ${joueurEnCours}:`, error);
-            });
-       
-      } else {
-        console.error(`Ce n'est pas au tour du joueur ${joueurEnCours} de jouer !`);
-      }
-    } else {
-      console.error(`La partie '${idgame}' n'existe pas !`);
-    }
-  }).catch((error) => {
-    console.error("Erreur lors de la récupération de la partie:", error);
-  });
-}
-
-
-
-
-
-
-
-
-
-firebase.firestore().collection('partie').doc(idgame).get()
-  .then((doc) => {
-    if (doc.exists) {
-      const nbJoueurs = doc.data().nbjoueurs;
-      const promises = []; // Tableau de promesses pour attendre que toutes les promesses d'accès à la BD soient résolues
-      const joueursHTML = []; // Tableau pour stocker le code HTML généré pour chaque joueur
-
-      // Parcourir tous les joueurs de la partie chargée
-      for (let i = 1; i <= nbJoueurs; i++) {
-        const joueurRef = doc.ref.collection('Joueurs').doc(`Joueur${i}`);
-
-        // Ajouter la promesse d'accès à la BD au tableau de promesses
-        promises.push(joueurRef.get().then((joueurDoc) => {
-          if (joueurDoc.exists) {
-            const couleur1 = joueurDoc.data().bleu || false;
-            const couleur2 = joueurDoc.data().rouge || false;
-            const couleur3 = joueurDoc.data().vert || false;
-            const couleur4 = joueurDoc.data().jaune || false;
-            const couleur5 = joueurDoc.data().violet || false;
-            const couleur6 = joueurDoc.data().orange || false;
-           // const nom = joueurDoc.data().nom;
-
-            // Ajouter le code HTML généré pour chaque joueur dans le tableau joueursHTML
-            joueursHTML[i - 1] = `
-              <div class="rectangle">
-                <span>Joueur${i}</span>
-                <div class="camenbert">
-                  <div class="part part-1" style="background-color: ${couleur1 ? 'blue' : 'white'};"></div>
-                  <div class="part part-2" style="background-color: ${couleur2 ? 'red' : 'white'};"></div>
-                  <div class="part part-3" style="background-color: ${couleur3 ? 'green' : 'white'};"></div>
-                  <div class="part part-4" style="background-color: ${couleur4 ? 'yellow' : 'white'};"></div>
-                  <div class="part part-5" style="background-color: ${couleur5 ? 'purple' : 'white'};"></div>
-                  <div class="part part-6" style="background-color: ${couleur6 ? 'orange' : 'white'};"></div>
-                  <div class="line line1"></div>
-                  <div class="line line2"></div>
-                  <div class="line line3"></div>
-                </div>
-              </div>
-            `;
-          } else {
-            console.log(`Le document Joueur${i} n'existe pas.`);
-          }
-        }));
-      }
-
-      // Attendre que toutes les promesses d'accès à la BD soient résolues avant d'ajouter le code HTML généré au document HTML
-      Promise.all(promises).then(() => {
-        // Ajouter le code HTML généré pour tous les joueurs au document HTML
-        document.getElementById('joueurs-container').innerHTML = joueursHTML.join('');
-      });
-    }
-  });
-
-
-
-// Insérer le code HTML dans la page jeu
-
-   
-
-// Genere aleatoirement une face d'un dé
-function changerDe() {
-  var de = document.getElementById("de");
-  var resultat = Math.floor(Math.random() * 6) + 1;
-//Stock la valeur du dé dans la bd 
-  firebase.firestore().collection('partie').doc(idgame).update({
-    de: resultat
-    })
-
-    .then(() => {
-        console.log("Le champ 'de' a été mis à jour avec succès !");
-    })
-    .catch((error) => {
-        console.error("Erreur lors de la mise à jour du champ 'de' : ", error);
-    });
-
-  de.src = "../assets/images/de" + resultat + ".png";
-}
 
 
 let colors = ['bleu', 'orange', 'rose', 'vert', 'cyan', 'marron', 'violet', 'rouge'];
@@ -227,10 +61,18 @@ btn.onclick = function() {
 
   setTimeout(function(){
     alert("Couleur gagnante : " + winningColor);
-}, 5000);
+
 
 couleurEncours =  winningColor
-  
+console.log("fghbhnbn : ",couleurEncours)
+
+firebase.database().ref(`question/${couleurEncours}/q1`).on('value', (snapshot) => {
+  const question = snapshot.val().question;
+  document.getElementById('message').textContent = question;
+}, (error) => {
+  console.log("Erreur lors de la lecture du document :", error);
+})
+  }, 5000);
 };
 
 
@@ -257,6 +99,137 @@ function getCurrentRotation(el) {
   }
   return angle;
 }
+
+
+
+
+
+
+//Verifie que la reponse saisie est la meme que celle de la question dans la bd
+function verifierReponse() {
+  var repsaisie = document.getElementById("validationReponse").value;
+  firebase.database().ref(`question/${couleurEncours}/q1/rep`).once('value', function(snapshot) {
+    var reponse = snapshot.val();
+    if (repsaisie === reponse) {
+      console.log("La réponse est vraie");
+      alert("Bonne réponse !");
+      mettreAJourCouleurJoueur(idgame,"4", couleurEncours);
+      console.log("test apres function");
+    } 
+    else {
+      console.log("La réponse est fausse");
+    }
+  }, function(error) {
+    console.error("Erreur lors de la récupération de la réponse : ", error);
+  });
+}
+
+
+
+
+
+
+
+function mettreAJourCouleurJoueur(idgame, joueurEnCours, couleur) {
+  const db = firebase.database();
+  const partieRef = db.ref("partie/" + idgame);
+
+  // Récupérer les informations de la partie
+  partieRef.once("value", (snapshot) => {
+    if (snapshot.exists()) {
+      const joueursRef = partieRef.child("Joueurs");
+
+      // Vérifier si c'est le tour du joueur en question
+      if ("4" === joueurEnCours) {
+        // Mettre à jour le champ "couleur" pour le joueur en question
+        const joueurRef = joueursRef.child("Joueur" + joueurEnCours);
+        joueurRef.update({ [couleur]: true })
+          .then(() => {
+            console.log(`Le champ 'couleur' a été mis à jour pour le joueur ${joueurEnCours} avec succès !`);
+            location.reload();
+          })
+          .catch((error) => {
+            console.error(`Erreur lors de la mise à jour du champ 'couleur' pour le joueur ${joueurEnCours}:`, error);
+          });
+      } else {
+        console.error(`Ce n'est pas au tour du joueur ${joueurEnCours} de jouer !`);
+      }
+    } else {
+      console.error(`La partie '${idgame}' n'existe pas !`);
+    }
+  }, (error) => {
+    console.error("Erreur lors de la récupération de la partie:", error);
+  });
+}
+
+
+
+
+
+
+
+
+
+firebase.database().ref(`partie/${idgame}`).once('value')
+  .then((snapshot) => {
+    const nbJoueurs = snapshot.child('nbrjoueurs').val();
+    console.log("nbjoueurs : ", nbJoueurs)
+
+    const promises = []; // Tableau de promesses pour attendre que toutes les promesses d'accès à la BD soient résolues
+    const joueursHTML = []; // Tableau pour stocker le code HTML généré pour chaque joueur
+
+    // Parcourir tous les joueurs de la partie chargée
+    for (let i = 1; i <= nbJoueurs; i++) {
+      const joueurRef = snapshot.ref.child(`Joueurs/Joueur${i}`);
+      console.log("test")
+      // Ajouter la promesse d'accès à la BD au tableau de promesses
+      promises.push(joueurRef.once('value').then((joueurSnapshot) => {
+        if (joueurSnapshot.exists()) {
+          const couleur1 = joueurSnapshot.child('bleu').val() || false;
+          const couleur2 = joueurSnapshot.child('rouge').val() || false;
+          const couleur3 = joueurSnapshot.child('vert').val() || false;
+          const couleur4 = joueurSnapshot.child('jaune').val() || false;
+          const couleur5 = joueurSnapshot.child('violet').val() || false;
+          const couleur6 = joueurSnapshot.child('orange').val() || false;
+          // const nom = joueurSnapshot.child('nom').val();
+
+          // Ajouter le code HTML généré pour chaque joueur dans le tableau joueursHTML
+          joueursHTML[i - 1] = `
+            <div class="rectangle">
+              <span>Joueur${i}</span>
+              <div class="camenbert">
+                <div class="part part-1" style="background-color: ${couleur1 ? 'blue' : 'white'};"></div>
+                <div class="part part-2" style="background-color: ${couleur2 ? 'red' : 'white'};"></div>
+                <div class="part part-3" style="background-color: ${couleur3 ? 'green' : 'white'};"></div>
+                <div class="part part-4" style="background-color: ${couleur4 ? 'yellow' : 'white'};"></div>
+                <div class="part part-5" style="background-color: ${couleur5 ? 'purple' : 'white'};"></div>
+                <div class="part part-6" style="background-color: ${couleur6 ? 'orange' : 'white'};"></div>
+                <div class="line line1"></div>
+                <div class="line line2"></div>
+                <div class="line line3"></div>
+              </div>
+            </div>
+          `;
+        } else {
+          console.log(`Le document Joueur${i} n'existe pas.`);
+        }
+      }));
+    }
+
+    // Attendre que toutes les promesses d'accès à la BD soient résolues avant d'ajouter le code HTML généré au document HTML
+    Promise.all(promises).then(() => {
+      // Ajouter le code HTML généré pour tous les joueurs au document HTML
+      document.getElementById('joueurs-container').innerHTML = joueursHTML.join('');
+    });
+  });
+
+
+
+   
+
+
+
+
 
 
   //window.onload = updateValeur;
