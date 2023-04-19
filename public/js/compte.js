@@ -27,12 +27,13 @@ firebase.firestore().collection("Login").get().then((querySnapshot) => {
 });
 
 let page = document.getElementById("existing");
-page.innerHTML = "Il n'existe pas de partie";
+//InnerText preféré a innerHTML pour empecher une attaque XSS
+page.innerText = "Il n'existe pas de partie";
 firebase.firestore().collection("partie").get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
         if (doc.exists && doc.id == idGamePlayer) {
             console.log("Une partie existe déja");
-            page.innerHTML = "Il existe déja une partie";
+            page.innerText = "Il existe déja une partie";
         }
     });
 });
