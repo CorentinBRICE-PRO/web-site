@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+        <meta charset="UTF-8">
+
+        <link rel="stylesheet" href="../css/Login.css">
+        <link rel="shortcut icon" href="../assets/images/backgroundaccueil.jpg" type="image/x-icon">
+    </head>
+
+    <body>
+
+        <!--Ajout de la Connexion sur le site-->
+        <div class="container">
+            <!--Permet de Créer un nouveau compte-->
+            <div class="form-container sign-up-container">
+            <form >
+                <h2>Créer un compte</h2>
+                <input type="text" id="Pseudo" placeholder="Nom/Pseudo">
+                <input type="email" id="email-signup" placeholder="Email">
+                <input type="password" id="mdp-signup" placeholder="Mot de passe">
+                <button type="button" class="button-sign" onclick="signUp()">Creer le compte</button>
+            </form>
+            </div>
+            <!--Permet de se connecter si on possède déjà un compte-->
+            <div class="form-container log-in-container">
+            <form>
+                <h2>J'ai déjà un compte</h2> 
+                <input type="email" id="email-login" placeholder="Email">
+                <input type="password" id="mdp-login" placeholder="Mot de passe">
+                <button type="button" class="button-log" onclick="logIn()">Se Connecter</button>
+            </form>
+            </div>
+        </div>
+
+        
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+        <script>
+            const firebaseConfig = {
+              apiKey: "AIzaSyAspisnbtuq7zXqNyeFA0xfkRKPCwlKDXk",
+              authDomain: "trivialpoursite.firebaseapp.com",
+              databaseURL: "https://trivialpoursite-default-rtdb.europe-west1.firebasedatabase.app",
+              projectId: "trivialpoursite",
+              storageBucket: "trivialpoursite.appspot.com",
+              messagingSenderId: "934201717719",
+              appId: "1:934201717719:web:77188c864e7bc443085192",
+              measurementId: "G-KF17Q422EM"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+        </script>
+        
+        <script src="../js/LoginAuth.js"></script>
+    </body>
+</html>
