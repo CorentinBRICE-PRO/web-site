@@ -78,3 +78,35 @@ html, body {
     background-color: blue;
     color: black;
   }
+
+ /* permet d'afficher les cookies en bas de page */
+  .cookie-consent {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    background-color: #f0f0f0;
+    text-align: center;
+  }
+  
+  .cookie-consent p {
+    display: inline-block;
+    margin: 0 auto;
+    max-width: 80%;
+  }
+  
+  .cookie-consent button {
+    margin-left: 20px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .cookie-consent p {
+      max-width: 100%;
+    }
+  }
+  

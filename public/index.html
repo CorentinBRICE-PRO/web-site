@@ -16,8 +16,30 @@
     <a href="html/Login.html"><button class="play-button2">Login</button></a>
   </div>
   </div>
+
+  <div id="cookie-consent" class="cookie-consent">
+		<p>Nous utilisons des cookies pour améliorer votre expérience de navigation sur notre site. En continuant à utiliser notre site, vous acceptez notre utilisation de cookies. <a href="#">En savoir plus</a></p>
+		<button onclick="acceptCookies()">J'accepte</button>
+	</div>
    
 </body>
+
+<script>
+  function acceptCookies() {
+    // Créer un cookie nommé "cookie_consent" avec une valeur de "true" qui expire dans un an
+    document.cookie = "cookie_consent=true;expires=" + new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toUTCString() + ";path=/";
+
+    // Cacher le message de consentement
+    document.getElementById("cookie-consent").style.display = "none";
+  }
+
+  // Vérifier si le cookie "cookie_consent" existe avant de charger la page
+  if (document.cookie.indexOf("cookie_consent=true") < 0) {
+    // Le cookie n'existe pas, afficher le message de consentement
+    document.getElementById("cookie-consent").style.display = "block";
+  }
+</script>
+
 <script src="jss/pageJeu.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/dompurify@2.3.1/dist/purify.min.js"></script>
 </html>
