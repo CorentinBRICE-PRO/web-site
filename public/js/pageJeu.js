@@ -28,11 +28,25 @@ const firebaseConfig = {
 // Initialisation de Firebase
 firebase.initializeApp(firebaseConfig);
 
+let tourdejouer;
+
+// Fonction pour initialiser la variable
+function getTourDeJouer() {
+  return firebase.database().ref(`partie/${idgame}/tour`).once('value')
+    .then(snapshot => {
+      tourdejouer = snapshot.val();
+    })
+    .catch(error => {
+      console.error('Erreur lors de la récupération du tour de jouer :', error);
+    });
+}
+
+// Appel de la fonction pour initialiser la variable
+getTourDeJouer();
 
 
 
-
-let colors = ['bleu', 'orange', 'rose', 'vert', 'cyan', 'marron', 'violet', 'rouge'];
+let colors = ['bleu', 'orange', 'rose', 'vert', 'jaune', 'marron', 'violet', 'rouge'];
 
 let container = document.querySelector(".container");
 let arrow = document.querySelector(".arrow");
@@ -100,6 +114,27 @@ function getCurrentRotation(el) {
   return angle;
 }
 
+function aquiletour() {
+  const ref = firebase.database().ref(`partie/${idgame}/tour`);
+  const nbrJoueursRef = firebase.database().ref(`partie/${idgame}/nbrjoueurs`);
+  let nbrJoueurs;
+  nbrJoueursRef.once("value", function(snapshot) {
+    nbrJoueurs = snapshot.val();
+  });
+  return ref.transaction(function(currentValue) {
+    let newValue = (currentValue || 0) + 1;
+    if (newValue > nbrJoueurs) {
+      newValue = 1;
+    }
+    return newValue;
+  }).then(function(transactionResult) {
+    return transactionResult.snapshot.val(); // renvoie la nouvelle valeur de "tour"
+  }).catch(function(error) {
+    console.error('Erreur lors de l\'incrémentation de la valeur de "tour" :', error);
+  });
+}
+
+
 
 
 
@@ -107,17 +142,26 @@ function getCurrentRotation(el) {
 
 //Verifie que la reponse saisie est la meme que celle de la question dans la bd
 function verifierReponse() {
+
   var repsaisie = document.getElementById("validationReponse").value;
   firebase.database().ref(`question/${couleurEncours}/q1/rep`).once('value', function(snapshot) {
     var reponse = snapshot.val();
     if (repsaisie === reponse) {
       console.log("La réponse est vraie");
       alert("Bonne réponse !");
-      mettreAJourCouleurJoueur(idgame,"4", couleurEncours);
-      console.log("test apres function");
+      aquiletour();
+      
+      console.log("Joueur",tourdejouer);
+      mettreAJourCouleurJoueur(idgame,tourdejouer, couleurEncours);
+    
     } 
     else {
+      
       console.log("La réponse est fausse");
+      aquiletour();
+      alert("Mauvaise réponse !");
+      location.reload();
+     
     }
   }, function(error) {
     console.error("Erreur lors de la récupération de la réponse : ", error);
@@ -140,7 +184,7 @@ function mettreAJourCouleurJoueur(idgame, joueurEnCours, couleur) {
       const joueursRef = partieRef.child("Joueurs");
 
       // Vérifier si c'est le tour du joueur en question
-      if ("4" === joueurEnCours) {
+      
         // Mettre à jour le champ "couleur" pour le joueur en question
         const joueurRef = joueursRef.child("Joueur" + joueurEnCours);
         joueurRef.update({ [couleur]: true })
@@ -151,9 +195,7 @@ function mettreAJourCouleurJoueur(idgame, joueurEnCours, couleur) {
           .catch((error) => {
             console.error(`Erreur lors de la mise à jour du champ 'couleur' pour le joueur ${joueurEnCours}:`, error);
           });
-      } else {
-        console.error(`Ce n'est pas au tour du joueur ${joueurEnCours} de jouer !`);
-      }
+     
     } else {
       console.error(`La partie '${idgame}' n'existe pas !`);
     }
@@ -164,16 +206,11 @@ function mettreAJourCouleurJoueur(idgame, joueurEnCours, couleur) {
 
 
 
-
-
-
-
-
-
 firebase.database().ref(`partie/${idgame}`).once('value')
   .then((snapshot) => {
     const nbJoueurs = snapshot.child('nbrjoueurs').val();
     console.log("nbjoueurs : ", nbJoueurs)
+    const aquiletour = snapshot.child('tour').val();
 
     const promises = []; // Tableau de promesses pour attendre que toutes les promesses d'accès à la BD soient résolues
     const joueursHTML = []; // Tableau pour stocker le code HTML généré pour chaque joueur
@@ -181,10 +218,12 @@ firebase.database().ref(`partie/${idgame}`).once('value')
     // Parcourir tous les joueurs de la partie chargée
     for (let i = 1; i <= nbJoueurs; i++) {
       const joueurRef = snapshot.ref.child(`Joueurs/Joueur${i}`);
-      console.log("test")
+             const couleur = aquiletour === i ? 'red' : 'black';
+      console.log("a qui le tour et couleur ",couleur,aquiletour)
       // Ajouter la promesse d'accès à la BD au tableau de promesses
       promises.push(joueurRef.once('value').then((joueurSnapshot) => {
         if (joueurSnapshot.exists()) {
+   
           const couleur1 = joueurSnapshot.child('bleu').val() || false;
           const couleur2 = joueurSnapshot.child('rouge').val() || false;
           const couleur3 = joueurSnapshot.child('vert').val() || false;
@@ -195,7 +234,7 @@ firebase.database().ref(`partie/${idgame}`).once('value')
 
           // Ajouter le code HTML généré pour chaque joueur dans le tableau joueursHTML
           joueursHTML[i - 1] = `
-            <div class="rectangle">
+            <div class="rectangle" style="border-color: ${couleur};">
               <span>Joueur${i}</span>
               <div class="camenbert">
                 <div class="part part-1" style="background-color: ${couleur1 ? 'blue' : 'white'};"></div>

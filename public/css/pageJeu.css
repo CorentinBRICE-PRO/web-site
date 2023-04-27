@@ -105,37 +105,31 @@ body {
   /* partie 1 du camenbert, on lui donne sa position (angle) ainsi que sa couleur*/
   .part-1 {
     transform: rotate(0deg);
-    background-color: rgb(0, 255, 30);
   }
   
   /* partie 2 du camenbert, on lui donne sa position (angle) ainsi que sa couleur*/
   .part-2 {
     transform: rotate(60deg);
-    background-color: rgb(230, 0, 255);
   }
   
   /* partie 3 du camenbert, on lui donne sa position (angle) ainsi que sa couleur*/
   .part-3 {
     transform: rotate(120deg);
-    background-color: rgb(255, 85, 0);
   }
   
   /* partie 4 du camenbert, on lui donne sa position (angle) ainsi que sa couleur*/
   .part-4 {
     transform: rotate(180deg);
-    background-color: rgb(242, 255, 0);
   }
   
   /* partie 5 du camenbert, on lui donne sa position (angle) ainsi que sa couleur*/
   .part-5 {
     transform: rotate(240deg);
-    background-color: rgb(43, 0, 255);
   }
   
   /* partie 6 du camenbert, on lui donne sa position (angle) ainsi que sa couleur*/
   .part-6 {
     transform: rotate(300deg);
-    background-color: rgb(128, 77, 0);
   }
 
 
@@ -295,23 +289,23 @@ td.couleur6{
 }
 
 .container .one{
-	background-color: #3f51b5;
+	background-color: blue;
 	left:50%;
 }
 .container .two{
-	background-color: #ff9800;
+	background-color:orange;
 	transform: rotate(45deg);
 }
 .container .three{
-	background-color: #e91e63;
+	background-color: pink;
 	transform:rotate(90deg);
 }
 .container .four{
-	background-color: #4caf50;
+	background-color:green;
 	transform: rotate(135deg);
 }
 .container .five{
-	background-color: #009688;
+  background-color: yellow;
 	transform: rotate(180deg);
 }
 .container .six{
@@ -319,11 +313,11 @@ td.couleur6{
 	transform: rotate(225deg);
 }
 .container .seven{
-	background-color: #9c27b0;
+	background-color: purple;
 	transform: rotate(270deg);
 }
 .container .eight{
-	background-color: #f44336;
+	background-color: red;
 	transform: rotate(315deg);
 }
 
