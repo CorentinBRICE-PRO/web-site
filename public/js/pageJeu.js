@@ -169,6 +169,10 @@ function verifierReponse() {
 }
 
 
+function retourMenu() {
+  // Rediriger l'utilisateur vers la page du menu
+  window.location.href = "../index.html";
+}
 
 
 
