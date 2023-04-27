@@ -16,9 +16,12 @@
             <div class="form-container sign-up-container">
             <form >
                 <h2>Créer un compte</h2>
-                <input type="text" id="Pseudo" placeholder="Nom/Pseudo">
-                <input type="email" id="email-signup" placeholder="Email">
-                <input type="password" id="mdp-signup" placeholder="Mot de passe">
+                <input type="text" id="Pseudo" placeholder="Nom/Pseudo" onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Nom/Pseudo'">
+                <input type="email" id="email-signup" placeholder="Email" onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Email'">
+                <input type="password" id="mdp-signup" placeholder="Mot de passe" onfocus="this.placeholder = ''"
+                onblur="this.placeholder = 'Mot de Passe'">
                 <button type="button" class="button-sign" onclick="signUp()">Creer le compte</button>
             </form>
             </div>
@@ -32,8 +35,7 @@
             </form>
             </div>
         </div>
-
-        
+    
         <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>

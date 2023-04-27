@@ -12,11 +12,8 @@ const firebaseConfig = {
 //Initialisation de Firebase
 firebase.initializeApp(firebaseConfig);
 
-var urlParams = new URLSearchParams(window.location.search);
-var pseudo = urlParams.get("valeur");
-
 // Utiliser DOMPurify pour nettoyer la valeur de pseudo
-pseudo = DOMPurify.sanitize(pseudo);
+//pseudo = DOMPurify.sanitize(pseudo);
 
 
 document.getElementById("compte").textContent = pseudo;
