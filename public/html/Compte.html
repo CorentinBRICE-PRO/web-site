@@ -1,37 +1,48 @@
 <!DOCTYPE html>
 <html>
+    <head>
+    <meta charset="UTF-8">
+    <title>Compte</title>
+    <link rel="stylesheet" href="../css/compte.css">
+    <link rel="shortcut icon" href="../assets/images/backgroundaccueil.jpg" type="image/x-icon">
+    </head>
 
-<head>
-    <!-- Ajout de Firebase -->
-<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
-  <meta charset="UTF-8">
-  <title>Compte</title>
-  <link rel="stylesheet" href="../css/compte.css">
-  <link rel="shortcut icon" href="../assets/images/backgroundaccueil.jpg" type="image/x-icon">
-</head>
-
-<body>
-
-    <h1>Compte</h1>
-    <div class="container">
-        <div class="compte" id="compte">
-            Pseudo
-        </div>
-        <!--Permet de Créer un nouveau compte-->
-        <div class="form-container new-game-container">
-            <h2>New Game</h2>
-            <button type="button" class="button-sign" onclick="">Créer la partie</button>
-        </div> 
-        <div class="form-container old-game-container">
-            <h2>Continue Game</h2>
-            <div class="existing-old-game" id="existing">
+    <body>
+        <h1>Compte</h1>
+        <div class="container">
+            <div class="compte" id="compte">
+                Pseudo
             </div>
-            <button class="button-log" onclick="logPartie()">Charger la partie</button>
-          </div>
-        </div>
-</body>
+            <!--Permet de Créer un nouveau compte-->
+            <div class="form-container new-game-container">
+                <h2>New Game</h2>
+                <button class="button-sign" onclick="creerPartie()">Créer la partie</button>
+            </div> 
+            <div class="form-container old-game-container">
+                <h2>Continue Game</h2>
+                <div class="existing-old-game" id="existing">
+                </div>
+                <button class="button-log" id="old" onclick="logPartie()">Charger la partie</button>
+            </div>
+            </div>
 
-<script src="../js/compte.js"></script>
-
+            <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+            <script>
+                const firebaseConfig = {
+                apiKey: "AIzaSyAspisnbtuq7zXqNyeFA0xfkRKPCwlKDXk",
+                authDomain: "trivialpoursite.firebaseapp.com",
+                databaseURL: "https://trivialpoursite-default-rtdb.europe-west1.firebasedatabase.app",
+                projectId: "trivialpoursite",
+                storageBucket: "trivialpoursite.appspot.com",
+                messagingSenderId: "934201717719",
+                appId: "1:934201717719:web:77188c864e7bc443085192",
+                measurementId: "G-KF17Q422EM"
+                };
+                // Initialize Firebase
+                firebase.initializeApp(firebaseConfig);
+            </script>
+            <script src="../js/compte.js"></script>
+    </body>
 </html>

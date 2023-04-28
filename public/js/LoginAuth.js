@@ -17,6 +17,7 @@ function signUp() {
             firebase.firestore().collection("Login").get().then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
                     if (doc.exists && doc.id == user.user.uid) {
+                        localStorage.setItem("uid", user.user.uid);
                         alert("Compte créer avec succés !");
                         resolve();
                     }
@@ -37,7 +38,6 @@ function signUp() {
     })
 }   
 
-
 function logIn() {
 
     var Email = document.getElementById("email-login").value;
@@ -49,6 +49,7 @@ function logIn() {
             querySnapshot.forEach((doc) => {
                 if (doc.exists) {
                     console.log("Logging in : ", user.user.uid)
+                    window.sessionStorage.setItem("uid", user.user.uid)
                     window.location.href = "../html/Compte.html";
                 }
             })
