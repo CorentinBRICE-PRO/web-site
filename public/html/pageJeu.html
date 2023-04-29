@@ -20,6 +20,10 @@
 </head>
 
 <body>
+  <div class="corps">
+  <div class="menu">
+    <button onclick="retourMenu()">Retour au menu</button>
+  </div>
   <!--création des differents Profils des joueurs avec les camenberts
   injecter par le script.js -->
   <div class="container3"> 
@@ -28,22 +32,24 @@
      
     </div>
   </div>
-  <div class="menu">
-    <button onclick="retourMenu()">Retour au menu</button>
-  </div>
+  
 </div>
   <!--creation de la case question dans laquelle on recrée une case réponse où l'utilisateur peux rentrer sa reponse dans un champs de texte-->
   <div class="question">
-		<h1>Question</h1>
+    <h1>Question</h1>
     <p><span id="message"></span></p>
     <div class="reponse">
-      <h2>Réponse</h2>
-      <form>
-        <input type="text"id="validationReponse" ><br><br>
-      </form>
-      <button  onclick="verifierReponse()"class="validation">Confirmer</button></a>
+    <h2>Réponse</h2>
+    <form>
+      <input type="text"id="validationReponse" ><br><br>
+    </form>
+    <div class="validation">
+      <button onclick="verifierReponse()">Confirmer</button></a>
     </div>
-	</div>
+  </div>
+  </div>
+  
+  
   </div>
   <button id="spin">Lancer</button>
 
@@ -62,7 +68,7 @@
 </div>
 <div class="arrow"></div>
 
-  
+</div>
   <script src="../js/pageJeu.js"></script>
   
 	

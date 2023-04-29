@@ -3,12 +3,23 @@
 }
 /* page en general on peut changer sa couleur etc...*/
 body {
-  background-color: #34495e;
+  background-color:beige;
     position: relative;
     justify-content: top;
+    width: 1690px;
+    height: 940px;
   }
   
-  
+  .corps{
+    position: absolute;
+    overflow: hidden;
+    width: 1690px;
+    height: 940px;
+    border-radius: 10px;
+    background-color: #34495e;
+    box-shadow: 0 8px 24px rgb(0, 32, 64);
+
+  }
   /* Section réservé pour l'affichage du dé (finis mais en attente)
   
   Pour le dé aussi  */
@@ -35,21 +46,23 @@ body {
   
   /* Gere l'emplacement global des Profils generés */
   .container2 {
+    top: 30%;
     right: 10px;
     display: flex;
     justify-content: left;
     align-items: center;
     margin-left: 3%;
-    height: 30%;
+    height: 35%;
     flex-direction: row;
   }
   .container3 {
+    top: 30%;
     right: 10px;
     display: flex;
     justify-content: left;
     align-items: center;
     margin-left: 3%;
-    height: 220px;
+    height: 250px;
     flex-direction: row;
   }
   /* rectangle sont placé les élements de chaque joueurs (Camenbert et Nom joueur)*/
@@ -163,126 +176,99 @@ body {
   transform: rotate(135deg);
 }
 
-
-
-.plateauComplet {
-    display: flex;
-    align-items: center;
-    position: relative;
-    margin-left: 50px;
-    width:50%;
-    height:800px;
-    }
-/* Gere l'emplacement du Plateau de jeu et ses dimensions*/
-
-.plateau {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-
-.containerDe {
+.validation {
   position: absolute;
-  top: 50%;
-  left: 43%;
-  transform: translate(-50%, -50%);
-  width: 15%;
+  bottom: 40px;
+  right: 40px;
 }
 
-/* td correspond a la case d'un tableau */
-td{ 
-  width:70px;
-  height:70px;
+.validation button {
+  padding: 10px;
+  background-color: #2ecc71;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-/* table represente notre tableau de donné qui aura comme but de créer le plateau*/
-table{
-    background-color: white;
-    
+.validation button:hover {
+  background-color: #27ae60;
 }
 
-/* couleur 0 correspond a la couleur blanche de notre tableau */
-td.couleur0{
-    background-color: white;
-}
-
-/* couleur 0 correspond a la couleur bleu de notre tableau */
-td.couleur1{
-    background-color: rgb(43, 0, 255);
-    border: 2.8px solid black;
-}
-
-/* couleur 0 correspond a la couleur jaune de notre tableau */
-td.couleur2{
-    background-color: rgb(242, 255, 0);
-    border: 2.8px solid black;
-}
-
-/* couleur 0 correspond a la couleur marron de notre tableau */
-td.couleur3{
-    background-color: rgb(128, 77, 0);
-    border: 2.8px solid black;
-}
-
-/* couleur 0 correspond a la couleur verte de notre tableau */
-td.couleur4{
-    background-color: rgb(0, 255, 30);
-    border: 2.8px solid black;
-}
-
-/* couleur 0 correspond a la couleur rouge de notre tableau */
-td.couleur5{ 
-  background-color: rgb(255, 85, 0);
-  border: 2.8px solid black;
-}
-
-/* couleur 0 correspond a la couleur rose de notre tableau */
-td.couleur6{ 
-  background-color: rgb(230, 0, 255);
-  border: 2.8px solid black;
-}
 
 /* modification de l'espace question*/
 .question {
-	background-color: #f2f2f2;
-	border: 1px solid #ccc;
+  position: absolute;
+	background-color: beige;
+
+  max-width: 100%;
+  border-radius: 10px;
+
+
+  box-shadow: 0 8px 24px rgb(0, 32, 64);
+
 	padding: 10px;
-  margin-right: 190px;
-	width: 30%;
+	width: 25%;
 	float: right;
+
+  position: absolute;
+  top: 30%;
+  right: 5%;
+ 
 }
 
 /*modification de l'espace reponse dans l'espace question*/
 .reponse {
-	width: 80%;
-  height: 400px;
-	margin-right: 50px;
+  position: absolute;
+	width: 100%;
+
   margin-left: 50px;
+  margin-bottom: 50px;
+  margin-top: 80px;
 	padding: 10px;
-	border: 1px solid #ccc;
+  background-color: beige;
+  border-radius: 10px;
+ 
+  box-shadow: 0 8px 24px rgb(0, 32, 64);
+	float: right;
+	border: 1px solid #000000;
+
+  
+  top: 80%;
+  right: 0%;
+}
+form {
+  top: 100%;
+  width: 100%;
 }
 
+input[type="text"] {
+  width: 100%;
+  height: 100px;
+  font-size: 50px;
+}
 
 /*Roue qui tourne*/
 
 
 .container{
-	width:500px;
-	height:500px;
-	background-color: #000000;
+  top : 25%;
+  left: 10%;
+	width:650px;
+	height:650px;
 	border-radius:50%;
 	border:15px solid rgb(0, 0, 0);
 	position: relative;
 	overflow: hidden;
-	transition: 5s;
+  background-color:blue;
+  transition: 5s;
 }
 
 .container div{
 	height:50%;
-	width:200px;
+	width:350px;
 	position: absolute;
-	clip-path: polygon(100%  0%, 50% 100% , 0 0 );
+	clip-path: polygon(80%  0%, 50% 100% , 0 0 );
 	transform:translateX(-50%);
 	transform-origin:bottom;
 	text-align:center;
@@ -292,49 +278,50 @@ td.couleur6{
 	font-size:20px;
 	font-weight:bold;
 	font-family:sans-serif;
-	color:#000000;
+	background-color:blue;
 	left:135px;
+  
 }
 
 .container .one{
 	background-color: blue;
-	left:50%;
+	left:52%;
 }
 .container .two{
 	background-color:orange;
-	transform: rotate(45deg);
+	transform: rotate(53deg);
 }
 .container .three{
 	background-color: pink;
-	transform:rotate(90deg);
+	transform:rotate(98deg);
 }
 .container .four{
 	background-color:green;
-	transform: rotate(135deg);
+	transform: rotate(143deg);
 }
 .container .five{
   background-color: yellow;
-	transform: rotate(180deg);
+	transform: rotate(188deg);
 }
 .container .six{
 	background-color: #795548;
-	transform: rotate(225deg);
+	transform: rotate(233deg);
 }
 .container .seven{
 	background-color: purple;
-	transform: rotate(270deg);
+	transform: rotate(278deg);
 }
 .container .eight{
 	background-color: red;
-	transform: rotate(315deg);
+	transform: rotate(318deg);
 }
 
 
 
 #spin{
 	position: absolute;
-	top: 63%;
-	left: 15%;
+	top: 58%;
+	left: 29%;
 	transform: translate(-50%, -50%);
 	z-index:10;
 	background-color: #b7a5a5;
@@ -350,17 +337,18 @@ td.couleur6{
 	cursor: pointer;
 	outline:none;
 	letter-spacing: 1px;
+
 }
 /* gestion du bouton pour quitter la partie */
 .menu {
   position: absolute;
-  bottom: 20px;
-  right: 20px;
+  top: 1%;
+	right: 1%;
 }
 
 .menu button {
   padding: 10px;
-  background-color: #2ecc71;
+  background-color: #cc2e2e;
   color: white;
   border: none;
   border-radius: 5px;
@@ -368,16 +356,17 @@ td.couleur6{
 }
 
 .menu button:hover {
-  background-color: #27ae60;
+  background-color: #ae2727;
 }
 
 .arrow {
   position: absolute;
-	top: 32%;
-	left: 13%;
+	top: 26%;
+	left: 27.7%;
   width: 0;
   height: 0;
   border-left: 25px solid transparent;
   border-right: 25px solid transparent;
   border-top: 50px solid rgb(0, 0, 0);
+ 
 }

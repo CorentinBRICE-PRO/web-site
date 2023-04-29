@@ -4,7 +4,6 @@
 var urlParams = new URLSearchParams(window.location.search);
 var idgame = urlParams.get("valeur");
 var couleurEncours = "undefined"
-console.log(typeof Symbol() === 'symbol' ? 'ES6+' : 'ES5');
 
 
 
@@ -53,7 +52,9 @@ let btn = document.getElementById("spin");
 let winningColor;
 
 let currentRotation = 0; // stocke l'angle de rotation actuel
-
+if (couleurEncours=="undefined") {
+  document.getElementById('message').textContent= "Veuillez tourner la roue !\n \n"
+}
 btn.onclick = function() {
   // Choisir une couleur aléatoire
   let randomIndex = Math.floor(Math.random() * colors.length);
@@ -77,6 +78,7 @@ btn.onclick = function() {
 
 couleurEncours =  winningColor
 console.log("fghbhnbn : ",couleurEncours)
+
 
 firebase.database().ref(`question/${couleurEncours}/q1`).on('value', (snapshot) => {
   const question = snapshot.val().question;
