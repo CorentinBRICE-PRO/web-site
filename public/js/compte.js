@@ -40,21 +40,63 @@ function logPartie() {
     console.log("Clicking" + idGamePlayer);
     window.location.href = "../html/pageJeu.html?valeur=" + idGamePlayer;
 }
-
+console.log(idGamePlayer)
 function creerPartie() {
     let nbjoueurs = prompt("Combien de joueurs ?");
     firebase.firestore().collection("partie").doc(idGamePlayer).set({
-        de: 2,
+        tour: 1,
         nbjoueurs: nbjoueurs,
       })
       .then(() => {
         //Redirection vesr la page de jeu de la nouvelle partie créée
         console.log("nbjoueur ajouté avec succès !");
-        window.location.href = "../html/pageJeu.html?valeur=" + idGamePlayer;
+       
+       // window.location.href = "../html/pageJeu.html?valeur=" + idGamePlayer;
       })
       .catch((error) => {
         console.error("Erreur lors de l'ajout du document :", error);
       });
+
+      nbjoueurs = parseInt(nbjoueurs);
+    
+firebase.database().ref("partie/" + idGamePlayer).set({
+    tour: 1,
+    nbrjoueurs: nbjoueurs,
+  }, function(error) {
+    if (error) {
+      console.error("Erreur lors de l'ajout du document :", error);
+    } else {
+      // Créer le chemin Joueurs s'il n'existe pas déjà
+      firebase.database().ref("Joueurs").set(null, function(error) {
+        if (error) {
+          console.error("Erreur lors de la création du chemin Joueurs :", error);
+        } else {
+          console.log("Chemin Joueurs créé avec succès !");
+          
+          // Créer un sous-chemin JoueurX pour chaque joueur
+          for (let i = 1; i <= nbjoueurs; i++) {
+            firebase.database().ref(`partie/${idGamePlayer}/Joueurs/Joueur${i}`).set({
+              bleu: false,
+              jaune: false,
+              orange: false,
+              rose: false,
+              rouge: false,
+              vert: false,
+              violet: false,
+            }, function(error) {
+              if (error) {
+                console.error("Erreur lors de l'ajout du document joueur :", error);
+              } else {
+                console.log(`Document joueur ${i} ajouté avec succès !`);
+              }
+            });
+          }
+          window.location.href = "../html/pageJeu.html?valeur=" + idGamePlayer;
+        }
+      });
+    }
+});
+
 }
 
 /*

@@ -60,7 +60,7 @@ btn.onclick = function() {
   winningColor = colors[randomIndex];
 
   // Calculer l'angle de rotation pour faire pointer la couleur gagnante vers le haut
-  let rotation = 720+382 - (randomIndex * 45 + 22.5) - currentRotation % 360;
+  let rotation = 1080+382 - (randomIndex * 45 + 22.5) - currentRotation % 360;
 
   // Ajouter le nouvel angle à l'angle de rotation actuel
   currentRotation += rotation;
