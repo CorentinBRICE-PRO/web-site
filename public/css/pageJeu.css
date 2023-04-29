@@ -43,7 +43,15 @@ body {
     height: 30%;
     flex-direction: row;
   }
-  
+  .container3 {
+    right: 10px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-left: 3%;
+    height: 220px;
+    flex-direction: row;
+  }
   /* rectangle sont placé les élements de chaque joueurs (Camenbert et Nom joueur)*/
   .rectangle {
     display: flex;
@@ -325,7 +333,7 @@ td.couleur6{
 
 #spin{
 	position: absolute;
-	top: 60%;
+	top: 63%;
 	left: 15%;
 	transform: translate(-50%, -50%);
 	z-index:10;
@@ -361,4 +369,15 @@ td.couleur6{
 
 .menu button:hover {
   background-color: #27ae60;
+}
+
+.arrow {
+  position: absolute;
+	top: 32%;
+	left: 13%;
+  width: 0;
+  height: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-top: 50px solid rgb(0, 0, 0);
 }

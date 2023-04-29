@@ -49,7 +49,6 @@ getTourDeJouer();
 let colors = ['bleu', 'orange', 'rose', 'vert', 'jaune', 'marron', 'violet', 'rouge'];
 
 let container = document.querySelector(".container");
-let arrow = document.querySelector(".arrow");
 let btn = document.getElementById("spin");
 let winningColor;
 
@@ -68,7 +67,6 @@ btn.onclick = function() {
 
   // Mettre à jour l'attribut "style" de la roue
   container.style.transform = "rotate(" + currentRotation + "deg)";
-  arrow.style.transform = "rotate(" + rotation + "deg)";
 
   // Afficher la couleur gagnante dans la console
   console.log("Couleur gagnante : " + winningColor);
