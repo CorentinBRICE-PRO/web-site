@@ -5,7 +5,7 @@ var urlParams = new URLSearchParams(window.location.search);
 var idgame = urlParams.get("valeur");
 var couleurEncours = "undefined"
 
-
+let randomNum = Math.floor(Math.random() * 15) + 1;
 
 
 
@@ -72,7 +72,8 @@ btn.onclick = function() {
   // Afficher la couleur gagnante dans la console
   console.log("Couleur gagnante : " + winningColor);
 
-  setTimeout(function(){
+  setTimeout(
+    function(){
     alert("Couleur gagnante : " + winningColor);
 
 
@@ -80,7 +81,8 @@ couleurEncours =  winningColor
 console.log("fghbhnbn : ",couleurEncours)
 
 
-firebase.database().ref(`question/${couleurEncours}/q1`).on('value', (snapshot) => {
+
+firebase.database().ref(`question/${couleurEncours}/q${randomNum}`).on('value', (snapshot) => {
   const question = snapshot.val().question;
   document.getElementById('message').textContent = question;
 }, (error) => {
@@ -143,10 +145,10 @@ function aquiletour() {
 //Verifie que la reponse saisie est la meme que celle de la question dans la bd
 function verifierReponse() {
 
-  var repsaisie = document.getElementById("validationReponse").value;
-  firebase.database().ref(`question/${couleurEncours}/q1/rep`).once('value', function(snapshot) {
-    var reponse = snapshot.val();
-    if (repsaisie === reponse) {
+  var repsaisie = document.getElementById("validationReponse").value.trim().toLowerCase();
+  firebase.database().ref(`question/${couleurEncours}/q${randomNum}/rep`).once('value', function(snapshot) {
+    var reponse = snapshot.val().toLowerCase();
+    if (repsaisie.includes(reponse)) {
       console.log("La réponse est vraie");
       alert("Bonne réponse !");
       aquiletour();

@@ -1,5 +1,5 @@
 body {
-    background-color: turquoise
+    background-color: #34495e
   }
   
   /* Button represente tous les buttons (button-gauche/droite/milieu*/
@@ -14,17 +14,18 @@ body {
 
   /* button gauche et ses attributs*/
   .button-gauche {
-    background-color: blue;
-    color: white;
+    background-color: rgb(255, 255, 255);
+    color: #34495e;
     font-size: 24px;
     padding: 16px 32px;
     border-radius: 8px;
-    border: none;
+    border: 2px black;
     cursor: pointer;
     margin-right: 40px;
   }
   button.button-gauche:hover {
     background-color:green;
+    color: white;
   }
 
   /*button droit et ses attributs*/

@@ -1,6 +1,6 @@
 
 body {
-    background-color: turquoise;
+    background-color:#34495e;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -77,8 +77,8 @@ body {
   /* Animation du bouton lorsqu'on le survole */
   button:hover {
     cursor: pointer;
-    background-color: aquamarine;
-    color: black;
+    background-color:#34495e;
+    color: rgb(255, 255, 255);
   }
   
   /* Titre Connexion */
@@ -95,5 +95,8 @@ body {
   
   /* When moving the mouse over the close button */
   .closebtn:hover {
-    color: black;
+    color: rgb(255, 255, 255);
   } 
+  input[type="text"], input[type="email"], input[type="password"] {
+    color: white;
+  }
