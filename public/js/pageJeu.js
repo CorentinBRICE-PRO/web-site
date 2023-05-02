@@ -55,7 +55,10 @@ let currentRotation = 0; // stocke l'angle de rotation actuel
 if (couleurEncours=="undefined") {
   document.getElementById('message').textContent= "Veuillez tourner la roue !\n \n"
 }
+
 btn.onclick = function() {
+  document.getElementById("spin").disabled = true;
+
   // Choisir une couleur aléatoire
   let randomIndex = Math.floor(Math.random() * colors.length);
   winningColor = colors[randomIndex];
@@ -117,6 +120,8 @@ function getCurrentRotation(el) {
 }
 
 function aquiletour() {
+  document.getElementById("spin").disabled = false;
+
   const ref = firebase.database().ref(`partie/${idgame}/tour`);
   const nbrJoueursRef = firebase.database().ref(`partie/${idgame}/nbrjoueurs`);
   let nbrJoueurs;
@@ -183,7 +188,6 @@ function retourMenu() {
 function mettreAJourCouleurJoueur(idgame, joueurEnCours, couleur) {
   const db = firebase.database();
   const partieRef = db.ref("partie/" + idgame);
-
   // Récupérer les informations de la partie
   partieRef.once("value", (snapshot) => {
     if (snapshot.exists()) {
@@ -210,7 +214,32 @@ function mettreAJourCouleurJoueur(idgame, joueurEnCours, couleur) {
   });
 }
 
+function verifieGagnant(){
+  firebase.database().ref(`partie/${idgame}`).once('value')
+  .then((snapshot) => {
+    const nbJoueurs = snapshot.child('nbrjoueurs').val();
+    console.log("nbjoueurs : ", nbJoueurs)
 
+    // Parcourir tous les joueurs de la partie chargée
+    for (let i = 1; i <= nbJoueurs; i++) {
+      const joueurRef = snapshot.ref.child(`Joueurs/Joueur${i}`);
+      joueurRef.once('value', (joueurSnapshot) => {
+        if (joueurSnapshot.child('bleu').val() === true &&
+        joueurSnapshot.child('jaune').val() === true &&
+        joueurSnapshot.child('rouge').val() === true &&
+        joueurSnapshot.child('orange').val() === true &&
+        joueurSnapshot.child('vert').val() === true &&
+        joueurSnapshot.child('violet').val() === true) {
+          console.log(`Joueur${i} a gagné`);
+        } else {
+          console.log(`Joueur${i} n'a pas encore gagné`);
+        }
+      });
+    }
+  });
+
+}
+verifieGagnant();
 
 firebase.database().ref(`partie/${idgame}`).once('value')
   .then((snapshot) => {
