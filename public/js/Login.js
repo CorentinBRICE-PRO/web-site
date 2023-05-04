@@ -40,7 +40,7 @@ function signUpJoueur() {
     var MotDePasse = document.getElementById("mdp-signup").value;
 
     // Utiliser DOMPurify pour nettoyer la valeur de pseudo/Email/Motdepasse
-    pseudo = DOMPurify.sanitize(pseudo);
+    Pseudo = DOMPurify.sanitize(Pseudo);
     Email = DOMPurify.sanitize(Email);
     MotDePasse = DOMPurify.sanitize(MotDePasse);
 
