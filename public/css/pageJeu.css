@@ -280,12 +280,13 @@ input[type="text"] {
 	font-family:sans-serif;
 	background-color:blue;
 	left:135px;
+ 
   
 }
 
 .container .one{
 	background-color: blue;
-	left:52%;
+	left:52%; 
 }
 .container .two{
 	background-color:orange;
@@ -316,7 +317,9 @@ input[type="text"] {
 	transform: rotate(318deg);
 }
 
-
+div.one, div.two, div.three, div.four, div.five, div.six, div.seven, div.eight {
+  font-size: 5rem; /* ajuster la taille selon vos préférences */
+}
 
 #spin{
 	position: absolute;
@@ -324,7 +327,7 @@ input[type="text"] {
 	left: 29%;
 	transform: translate(-50%, -50%);
 	z-index:10;
-	background-color: #b7a5a5;
+	background-color:solid black;
 	text-transform: uppercase;
 	border:8px solid #000000;
 	font-weight:bold;

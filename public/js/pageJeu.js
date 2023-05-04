@@ -83,14 +83,25 @@ btn.onclick = function() {
 couleurEncours =  winningColor
 console.log("fghbhnbn : ",couleurEncours)
 
-
-
-firebase.database().ref(`question/${couleurEncours}/q${randomNum}`).on('value', (snapshot) => {
+if (couleurEncours==="rose") {
+  alert("Retournes la roue !"); 
+  document.getElementById("spin").disabled = false;
+} 
+if (couleurEncours==="marron") {
+ 
+  aquiletour(); 
+  alert("Saute ton tour XD "); 
+  location.reload();
+} 
+else {
+  firebase.database().ref(`question/${couleurEncours}/q${randomNum}`).on('value', (snapshot) => {
   const question = snapshot.val().question;
   document.getElementById('message').textContent = question;
 }, (error) => {
   console.log("Erreur lors de la lecture du document :", error);
 })
+}
+
   }, 5000);
 };
 
@@ -296,10 +307,7 @@ firebase.database().ref(`partie/${idgame}`).once('value')
       document.getElementById('joueurs-container').innerHTML = joueursHTML.join('');
     });
   });
-
-
-
-   
+ 
 
 
 

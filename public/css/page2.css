@@ -57,13 +57,23 @@ body {
     background-color:green;
   }
   
+    
   .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    max-width: 500px;
-    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    min-height: 500px;
+    width: 750px;
+    max-width: 100%;
+    border-radius: 10px;
+    background-color: beige;
+    box-shadow: 0 8px 24px rgb(0, 32, 64);
+  }
+  
+  /* Le container pour la partie connexion et création */
+  .form-container {
+    position: absolute;
+    top: 0;
+    height: 100%;
   }
   
   label {

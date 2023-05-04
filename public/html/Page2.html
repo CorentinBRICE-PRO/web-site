@@ -12,24 +12,22 @@
 </head>
 
 <body>
-  <!-- utilisation de style="text-align:center pour centrer le texte, ici notre titre de page"-->
-  <h1 style="text-align:center">CHOISISSEZ VOTRE NOMBRE DE JOUEUR</h1>
-  <!--création des differents bouton pour savoir combien de joueur veulent jouer-->
-  <div class="Button">
-    <button id="bouton-1" value="2" class="button-gauche">2 joueurs</button></a>
-    <button id="bouton-2" value="3" class="button-milieu">3 joueurs</button></a>
-    <button id="bouton-3" value="4" class="button-droite">4 joueurs</button></a>
-  </div>
+
   <div class="container">
-    <label for="newidgameSaisie">Saisir un id de partie de votre choix(oublie pas le nombre de joueurs):</label>
-    <input type="text" id="newidgameSaisie">
-    <button class="button-start" onclick="creerPartie()">Commencer une nouvelle partie</button>
-  </div>
-  <div class="container">
-    <label for="idgame">Saisir l'id de la partie sauvegardé (pour tester : "Partie1") :</label>
-    <input type="text" id="idgame">
-    <button class="button-start" onclick="logPartie()">Charger la partie</button>
-  </div>
+    <!--Permet de Créer un nouveau compte-->
+    <div class="form-container sign-up-container">
+    <form >
+        <h2>Charger une partie</h2>
+        <div>
+          <label for="idgame">Saisir l'id de la partie sauvegardé (pour tester : "Partie1") :</label>
+          <input type="text" id="idgame">
+          <button class="button-start" onclick="logPartie()">Charger la partie</button>
+        </div>   </form>
+    </div>
+
+</div>
+
+  
   
   
 
