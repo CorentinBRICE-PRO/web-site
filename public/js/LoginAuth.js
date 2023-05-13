@@ -6,6 +6,10 @@ function signUp() {
     var Email = document.getElementById("email-signup").value;
     var MotDePasse = document.getElementById("mdp-signup").value;
 
+    const clearpseudo = DOMPurify.sanitize(Pseudo);
+    const clearEmail = DOMPurify.sanitize(Email);
+    const clearMdp = DOMPurify.sanitize(MotDePasse);
+
     const auth = new Promise((resolve, reject) => {
         firebase.auth()
         .createUserWithEmailAndPassword(Email, MotDePasse)

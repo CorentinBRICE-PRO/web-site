@@ -42,6 +42,7 @@ function signUpJoueur() {
     const clearPseudo = DOMPurify.sanitize(Pseudo);
     const clearEmail = DOMPurify.sanitize(Email);
     const clearMotDePasse = DOMPurify.sanitize(MotDePasse);
+    
 
     // Vérifie si il y a un pseudo dans le champ Pseudo/Nom
     if (Pseudo) {
