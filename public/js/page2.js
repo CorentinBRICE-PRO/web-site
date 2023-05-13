@@ -11,7 +11,8 @@ projectId: "trivialpoursite",
 storageBucket: "trivialpoursite.appspot.com",
 messagingSenderId: "934201717719",
 appId: "1:934201717719:web:77188c864e7bc443085192",
-measurementId: "G-KF17Q422EM"
+measurementId: "G-KF17Q422EM",
+databaseURL: "https://trivialpoursite-default-rtdb.europe-west1.firebasedatabase.app"
 };
 
 //Initialisation de Firebase
@@ -19,67 +20,28 @@ measurementId: "G-KF17Q422EM"
 firebase.initializeApp(firebaseConfig);
 
 
-// Attribution du nombre de joueur à la variable valeurDuBouton
-var boutons = document.querySelectorAll("button");
-let valeurDuBouton;
-for (var i = 0; i < (boutons.length-1); i++) {
-    boutons[i].addEventListener("click", function() {
-    valeurDuBouton = this.value; 
-    });
-}
-
-
-// Création de partie dans la Firestore
-function creerPartie() {
-  // Recupere l'id de la partie saisie par l'utilisateur pour la creer dans la bd
-  var newidgameSaisie = document.getElementById("newidgameSaisie").value;
-    // Atribution du nombre de joueur selectionné par l'utilisateur
-
-    for (let i = 1; i <= valeurDuBouton; i++) {
-      firebase.firestore().collection("partie").doc(newidgameSaisie).collection("Joueurs").doc(`Joueur${i}`).set({
-        nom: `Joueur ${i}`,
-        bleu: true,
-        jaune : false,
-        rouge : true,
-        vert : false,
-        orange : false,
-        violet: false,
-        
-      });
-    }
-  firebase.firestore().collection("partie").doc(newidgameSaisie).set({
-    de: 2,
-    nbjoueurs: valeurDuBouton,
-  })
-  .then(() => {
-    //Redirection vesr la page de jeu de la nouvelle partie créée
-    console.log("nbjoueur ajouté avec succès !");
-    window.location.href = "../html/pageJeu.html?valeur=" + newidgameSaisie;
-  })
-  .catch((error) => {
-    console.error("Erreur lors de l'ajout du document :", error);
-  });
-}
 
 // Connexion a une partie deja existante dans la bd
 function logPartie() {
-    var idsaisie = document.getElementById("idgame").value;
-    //Verifie si l'idgame saisie existe et si cest le cas charge la page de jeu adequate
-    firebase.firestore().collection("partie").get().then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          if (doc.exists && doc.id === idsaisie) {
-            const idgame = doc.id;
-            window.location.href = "../html/pageJeu.html?valeur=" + idgame;
-     
-            console.log("La valeur de idgame est : ", idgame);
-        } else {
-           
-            console.log("idgame n'existe pas  !");
-        }
-    });
-    }).catch((error) => {
-        console.log("Erreur lors de la récupération du document : ", error);
-    });
+  var idsaisie = document.getElementById("idgame").value;
+  console.log(idsaisie);
+  console.log("../html/pageJeu.html?valeur="+idsaisie);
+
+  // Accéder à la référence de la partie correspondant à l'identifiant saisi
+  firebase.database().ref(`partie/${idsaisie}`).on("value", (snapshot) => {
+    // Vérifier si snapshot contient une valeur
+    if (snapshot.exists()) {
+      const idgame = snapshot.key;
+      // Rediriger l'utilisateur vers la page de jeu
+      window.location.href = "../html/pageJeu.html?valeur=" + idgame;
+      console.log("La valeur de idgame est : ", idgame);
+    } else {
+      console.log("L'identifiant de partie saisi n'existe pas dans la base de données.");
+      alert("Identifiant de partie n'existe pas, veuillez saisir un id valide")
+    }
+  }, (error) => {
+    console.log("Erreur lors de la récupération du document : ", error);
+  });
 }
 
 
