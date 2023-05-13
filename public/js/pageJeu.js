@@ -1,6 +1,6 @@
 
 // Création d'un objet URLSearchParams contenant les paramètres de l'URL actuelle pour la récupération
-//  de la valeur du paramètre "valeur" dans l'URL qui correspond au nombre de joueur
+// de la valeur du paramètre "valeur" dans l'URL qui correspond au nombre de joueur
 var urlParams = new URLSearchParams(window.location.search);
 var idgame = urlParams.get("valeur");
 var couleurEncours = "undefined"
@@ -158,7 +158,7 @@ function aquiletour() {
 
 
 
-//Verifie que la reponse saisie est la meme que celle de la question dans la bd
+// Verifie que la reponse saisie est la meme que celle de la question dans la bd
 function verifierReponse() {
 
   var repsaisie = document.getElementById("validationReponse").value.trim().toLowerCase();
@@ -241,6 +241,7 @@ function verifieGagnant(){
         joueurSnapshot.child('orange').val() === true &&
         joueurSnapshot.child('vert').val() === true &&
         joueurSnapshot.child('violet').val() === true) {
+        
           console.log(`Joueur${i} a gagné`);
         } else {
           console.log(`Joueur${i} n'a pas encore gagné`);
