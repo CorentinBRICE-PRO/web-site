@@ -1,4 +1,5 @@
 
+
 function signUp() {
 
     var Pseudo = document.getElementById("Pseudo").value;
@@ -44,8 +45,8 @@ function logIn() {
     var MotDePasse = document.getElementById("mdp-login").value;
 
     // Utiliser DOMPurify pour nettoyer la valeur de Email/Motdepasse
-    Email = DOMPurify.sanitize(Email);
-    MotDePasse = DOMPurify.sanitize(MotDePasse); 
+    const clearEmail = DOMPurify.sanitize(Email);
+    const clearMotDePasse = DOMPurify.sanitize(MotDePasse); 
     
     firebase.auth().signInWithEmailAndPassword(Email, MotDePasse)
     .then((user) => {

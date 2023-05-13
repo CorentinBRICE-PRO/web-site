@@ -1,5 +1,4 @@
 
-
 //Configuration des identifiants de connexion pour la bd de Firebase (Firestore).
 const firebaseConfig = {
 apiKey: "AIzaSyAspisnbtuq7zXqNyeFA0xfkRKPCwlKDXk",
@@ -40,9 +39,9 @@ function signUpJoueur() {
     var MotDePasse = document.getElementById("mdp-signup").value;
 
     // Utiliser DOMPurify pour nettoyer la valeur de pseudo/Email/Motdepasse
-    Pseudo = DOMPurify.sanitize(Pseudo);
-    Email = DOMPurify.sanitize(Email);
-    MotDePasse = DOMPurify.sanitize(MotDePasse);
+    const clearPseudo = DOMPurify.sanitize(Pseudo);
+    const clearEmail = DOMPurify.sanitize(Email);
+    const clearMotDePasse = DOMPurify.sanitize(MotDePasse);
 
     // Vérifie si il y a un pseudo dans le champ Pseudo/Nom
     if (Pseudo) {
