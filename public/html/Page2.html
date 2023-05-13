@@ -2,8 +2,9 @@
 <html>
    <!-- Ajout de Firebase -->
 <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
 
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
 <head>
   <meta charset="UTF-8">
   <title>Choixjoueurs</title>
@@ -15,14 +16,16 @@
 
   <div class="container">
     <!--Permet de Créer un nouveau compte-->
-    <div class="form-container sign-up-container">
+    <div class="form-container">
     <form >
         <h2>Charger une partie</h2>
         <div>
-          <label for="idgame">Saisir l'id de la partie sauvegardé (pour tester : "Partie1") :</label>
+          <label>Saisir l'id de la partie sauvegardé (pour tester : "admin") :</label>
           <input type="text" id="idgame">
-          <button class="button-start" onclick="logPartie()">Charger la partie</button>
-        </div>   </form>
+          
+        </div>   
+      </form>
+      <button class="button-start" onclick="logPartie()">Charger la partie</button>
     </div>
 
 </div>
