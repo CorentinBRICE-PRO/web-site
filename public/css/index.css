@@ -45,6 +45,14 @@ html, body {
     height: 65vh;
     width: 150vw;
   }
+  .container3 {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 9vh;
+    width: 8vw;
+  }
   /* attribut permettant de changer le design du bouton et ses parametres*/
   .play-button {
     background-color: transparent;
@@ -67,6 +75,17 @@ html, body {
     transition: .2s ease-in-out;
   }
 
+  .play-button3 {
+    background-color: transparent;
+    color: black;
+    font-size: 32px;
+    padding: 16px 32px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: .2s ease-in-out;
+  }
+
   /* Permet d'animer les boutons lorsque l'on passe la souris dessus */
   .play-button:hover {
     cursor: pointer;
@@ -77,6 +96,12 @@ html, body {
   .play-button2:hover {
     cursor: pointer;
     background-color: blue;
+    color: black;
+  }
+
+  .play-button3:hover {
+    cursor: pointer;
+    background-color: green;
     color: black;
   }
 

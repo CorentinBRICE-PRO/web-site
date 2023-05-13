@@ -32,6 +32,7 @@ function logPartie() {
     // Vérifier si snapshot contient une valeur
     if (snapshot.exists()) {
       const idgame = snapshot.key;
+  
       // Rediriger l'utilisateur vers la page de jeu
       window.location.href = "../html/pageJeu.html?valeur=" + idgame;
       console.log("La valeur de idgame est : ", idgame);

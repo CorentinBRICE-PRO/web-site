@@ -309,7 +309,11 @@ firebase.database().ref(`partie/${idgame}`).once('value')
   });
  
 
+  function retourRegle() {
 
+    window.location.href = "../html/regle.html?valeur=" + idgame;
+  
+  }
 
 
 
