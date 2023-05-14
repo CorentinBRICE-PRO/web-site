@@ -230,7 +230,7 @@ function verifieGagnant(){
   .then((snapshot) => {
     const nbJoueurs = snapshot.child('nbrjoueurs').val();
     console.log("nbjoueurs : ", nbJoueurs)
-
+    
     // Parcourir tous les joueurs de la partie chargée
     for (let i = 1; i <= nbJoueurs; i++) {
       const joueurRef = snapshot.ref.child(`Joueurs/Joueur${i}`);
@@ -241,8 +241,29 @@ function verifieGagnant(){
         joueurSnapshot.child('orange').val() === true &&
         joueurSnapshot.child('vert').val() === true &&
         joueurSnapshot.child('violet').val() === true) {
-        
+          
           console.log(`Joueur${i} a gagné`);
+          alert(`Joueur${i} a gagné`)
+          for (let j = 1; j <= nbJoueurs; j++) {
+            const joueurRef = snapshot.ref.child(`Joueurs/Joueur${j}`);
+            joueurRef.once('value', (joueurSnapshot) => {
+              joueurRef.child('bleu').set(false);
+              joueurRef.child('jaune').set(false);
+              joueurRef.child('rouge').set(false);
+              joueurRef.child('orange').set(false);
+              joueurRef.child('vert').set(false);
+              joueurRef.child('violet').set(false);
+              console.log(`Jzedfscezsrdfcerdsfcerfsdvced`);
+            })}
+            firebase.database().ref(`partie/${idgame}`).update({
+              tour: 1
+            }).then(() => {
+              console.log("La valeur de 'tour' a été mise à jour avec succès");
+            }).catch((error) => {
+              console.error("Une erreur s'est produite lors de la mise à jour de 'tour':", error);
+            });
+            location.reload();
+
         } else {
           console.log(`Joueur${i} n'a pas encore gagné`);
         }
@@ -316,7 +337,12 @@ firebase.database().ref(`partie/${idgame}`).once('value')
   
   }
 
-
+  history.pushState(null, null, location.href);
+  window.onpopstate = function(event) {
+      history.go(1);
+  };
+  history.replaceState(null, null, document.URL);
+  
 
 
   //window.onload = updateValeur;
