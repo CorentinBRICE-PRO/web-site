@@ -15,7 +15,7 @@
   flex-direction: column;
   
 }
- /*parametre de la page entière (la couleur de son fond)*/
+ /*parametre de la page entiÃ¨re (la couleur de son fond)*/
  body {
   background-color: rgb(50, 90, 234);
   background-image: url(../assets/images/tetete.jpg);
@@ -34,8 +34,8 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height:140vh;
-    width: 100vw;
+    height:135vh;
+    width: 100%;
   }
 
   .container2 {
@@ -43,15 +43,15 @@ html, body {
     justify-content: center;
     align-items: center;
     height: 65vh;
-    width: 150vw;
+    width: 100%;
   }
   .container3 {
     position: absolute;
     display: flex;
-    justify-content: center;
+    justify-content: right;
     align-items: center;
-    height: 9vh;
-    width: 8vw;
+    height: 94vh;
+    width: 45%;
   }
   /* attribut permettant de changer le design du bouton et ses parametres*/
   .play-button {
@@ -67,7 +67,7 @@ html, body {
   
   .play-button2 {
     background-color: transparent;
-    color: rgb(255, 255, 255);
+    color: black;
     font-size: 30px;
     padding: 16px 32px;
     border-radius: 8px;
@@ -135,4 +135,3 @@ html, body {
       max-width: 100%;
     }
   }
-  
