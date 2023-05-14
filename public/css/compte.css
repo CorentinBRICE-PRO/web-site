@@ -1,6 +1,6 @@
 
 body {
-    background-color: turquoise;
+    background-color: #34495e;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -78,7 +78,7 @@ button {
 /* Animation du bouton lorsqu'on le survole */
 button:hover {
   cursor: pointer;
-  background-color: aquamarine;
+  background-color: #34495e;
   color: black;
 }
 
@@ -86,6 +86,7 @@ button:hover {
 h1 {
   margin-bottom: 25px;
   font-size: 40px;
+  color: beige;
 }
 
 /* Titre Créer un compte et J'ai deja un compte */
