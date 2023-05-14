@@ -1,78 +1,82 @@
 <!DOCTYPE html>
 <html>
   
-<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
- <!-- Inclusion des bibliothèques Firebase -->
- <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
-<!-- Ajouter les scripts Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
+  <!-- Inclusion des bibliothèques Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
+  <!-- Ajouter les scripts Firebase -->
 
-
-
-
-
-<head>
-
-  <meta charset="UTF-8">
-  <title>Page de JEU</title>
-  <link rel="stylesheet" href="../css/pageJeu.css">
-  <link rel="shortcut icon" href="../assets/images/backgroundaccueil.jpg" type="image/x-icon">
-</head>
+  <head>
+    <meta charset="UTF-8">
+    <title>Page de JEU</title>
+    <link rel="stylesheet" href="../css/pageJeu.css">
+    <link rel="shortcut icon" href="../assets/images/backgroundaccueil.jpg" type="image/x-icon">
+  </head>
 
 <body>
   <div class="corps">
-  <div class="menu">
-    <button onclick="retourMenu()">Retour au menu</button>
-  </div>
-  <div class="regle">
-    <button onclick="retourRegle()">Règles</button>
+    <div class="menu">
+      <button onclick="retourMenu()">Retour au menu</button>
+    </div>
+    <div class="regle">
+      <button onclick="retourRegle()">Règles</button>
+    </div>
+
+    <!--création des differents Profils des joueurs avec les camenberts
+    injecter par le script.js -->
+    <div class="container3"> 
+      <div id="nombreJoueur" class="containerProfil">
+        <div id="joueurs-container" class="container2">
+      
+        </div>
+      </div>
+    </div>
+    <!--creation de la case question dans laquelle on recrée une case réponse où l'utilisateur peux rentrer sa reponse dans un champs de texte-->
+    <div class="question">
+        <h1>Question</h1>
+        <p><span id="message"></span></p>
+        <div class="reponse">
+          <h2>Réponse</h2>
+          <form>
+            <input type="text"id="validationReponse" ><br><br>
+          </form>
+          <div class="validation">
+            <button onclick="verifierReponse()">Confirmer</button></a>
+          </div>
+        </div>
+      </div>
+      <div class="idgame">
+        <h3>Id de la Partie :</h3>
+        <!-- The text field -->
+         <input class="textIdGame" type="text-idgame" value="" id="myInput" readonly="readonly">
+    
+         <!-- The button used to copy the text -->
+         <button class="button-idgame" onclick="CopyIdGame()">Copy text</button> 
+     </div>
   </div>
 
-  <!--création des differents Profils des joueurs avec les camenberts
-  injecter par le script.js -->
-  <div class="container3"> 
-  <div id="nombreJoueur" class="containerProfil">
-    <div id="joueurs-container" class="container2">
-     
-    </div>
-  </div>
   
-</div>
-  <!--creation de la case question dans laquelle on recrée une case réponse où l'utilisateur peux rentrer sa reponse dans un champs de texte-->
-  <div class="question">
-    <h1>Question</h1>
-    <p><span id="message"></span></p>
-    <div class="reponse">
-    <h2>Réponse</h2>
-    <form>
-      <input type="text"id="validationReponse" ><br><br>
-    </form>
-    <div class="validation">
-      <button onclick="verifierReponse()">Confirmer</button></a>
-    </div>
-  </div>
-  </div>
-  
-  
-  </div>
+
   <button id="spin">Lancer</button>
 
-<div class="container">
- 
-	<div class="one"> .     🌍 .</div>
-	<div class="two">⚽️</div>
-	<div class="three">🔄</div>
-	<div class="four">🔬</div>
-	<div class="five">💻</div>
-	<div class="six">🚫</div>
-	<div class="seven">📚</div>
-	<div class="eight">🎭</div> 
-  
+    <div class="container">
+    
+      <div class="one"> .     🌍 .</div>
+      <div class="two">⚽️</div>
+      <div class="three">🔄</div>
+      <div class="four">🔬</div>
+      <div class="five">💻</div>
+      <div class="six">🚫</div>
+      <div class="seven">📚</div>
+      <div class="eight">🎭</div> 
+      
 
-</div>
-<div class="arrow"></div>
+    </div>
+    <div class="arrow"></div>
 
-</div>
+  </div>
+
   <script src="../js/pageJeu.js"></script>
   
 	<audio autoplay loop>

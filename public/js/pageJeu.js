@@ -7,7 +7,7 @@ var couleurEncours = "undefined"
 
 let randomNum = Math.floor(Math.random() * 15) + 1;
 
-
+document.getElementById("myInput").value = idgame;
 
 //Configuration des identifiants de connexion pour la bd de Firebase (Firestore).
 const firebaseConfig = {
@@ -344,5 +344,21 @@ firebase.database().ref(`partie/${idgame}`).once('value')
   history.replaceState(null, null, document.URL);
   
 
+
+  function CopyIdGame() {
+    // Get the text field
+    
+    var copyText = document.getElementById("myInput");
+  
+    // Select the text field
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); // For mobile devices
+  
+     // Copy the text inside the text field
+    navigator.clipboard.writeText(copyText.value);
+  
+    // Alert the copied text
+    alert("Copied the text: " + copyText.value);
+  } 
 
   //window.onload = updateValeur;
