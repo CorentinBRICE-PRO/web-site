@@ -189,6 +189,7 @@ body {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-size: large;
 }
 
 .validation button:hover {
@@ -255,8 +256,8 @@ body {
 	border: 1px solid #000000;
 
   
-  bottom: 10%;
-  right: 10%;
+  top: 5%;
+  right: 5%;
 }
 
 .textIdGame {
@@ -394,12 +395,12 @@ div.one, div.two, div.three, div.four, div.five, div.six, div.seven, div.eight {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 32px;
 }
 
 .menu button:hover {
   background-color: #ae2727;
 }
-
 
 .arrow {
   position: absolute;
@@ -418,7 +419,7 @@ div.one, div.two, div.three, div.four, div.five, div.six, div.seven, div.eight {
 .regle {
   position: absolute;
   top: 1%;
-	right: 8.5%;
+	right: 18%;
 }
 
 .regle button {
@@ -428,6 +429,7 @@ div.one, div.two, div.three, div.four, div.five, div.six, div.seven, div.eight {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 32px;
 }
 
 .regle button:hover {
