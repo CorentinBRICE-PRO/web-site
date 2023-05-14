@@ -186,6 +186,15 @@ function verifierReponse() {
   });
 }
 
+//Bloque la touche entrée de la reponse 
+
+const input = document.getElementById('validationReponse');
+
+input.addEventListener('keydown', function(event) {
+  if (event.keyCode === 13) { // keyCode 13 correspond à la touche Entrée
+    event.preventDefault(); // empêche la soumission du formulaire
+  }
+});
 
 function retourMenu() {
   // Rediriger l'utilisateur vers la page du menu
@@ -333,7 +342,7 @@ firebase.database().ref(`partie/${idgame}`).once('value')
 
   function retourRegle() {
 
-    window.location.href = "../html/regle.html?valeur=" + idgame;
+    window.location.href = "../html/Regle.html?valeur=" + idgame;
   
   }
 

@@ -74,3 +74,23 @@ body {
   .regle button:hover {
     background-color: rgb(191, 20, 20);
   }
+
+   
+  .bonus {
+    position: absolute;
+    top: 1%;
+    right: 5%;
+  }
+  
+  .bonus button {
+    padding: 10px;
+    background-color: rgb(255, 166, 0);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .bonus button:hover {
+    background-color: rgb(191, 131, 20);
+  }

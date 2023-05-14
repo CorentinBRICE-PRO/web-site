@@ -2,9 +2,66 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Mdr</title>
+    <title>BONUS</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #222222;
+      }
+  
+      video {
+        width: 100%;
+        height: auto;
+      }
+    </style>
   </head>
-  <body style="margin: 0; padding: 0;">
-    <video src="assets/video/404.mp4" autoplay controls style="width: 100%; height: 100%;"></video>
+  <body>
+
+    <button id="play-button">BONUS</button>
+    <div class="bonus">
+      <button onclick="retour()">Retour</button>
+    </div>
+
+    <video id="video-player" controls>
+      <source src="assets/video/404.mp4" type="video/mp4">
+    </video>
+
+    <script>
+      const playButton = document.getElementById('play-button');
+      const videoPlayer = document.getElementById('video-player');
+
+      // Cacher la vidéo par défaut
+      videoPlayer.style.display = 'none';
+
+      // Ajouter un événement de clic sur le bouton de lecture
+      playButton.addEventListener('click', () => {
+        // Afficher la vidéo et démarrer la lecture
+        videoPlayer.style.display = 'block';
+        videoPlayer.play();
+      });
+
+
+      var urlParams = new URLSearchParams(window.location.search);
+var idgame = urlParams.get("valeur");
+
+console.log(idgame)
+
+function retour() {
+
+    if (idgame==null) {
+        window.location.href = "../index.html";
+    }
+    else{
+        window.location.href = "html/pageJeu.html?valeur=" + idgame;
+    } 
+  
+  }
+    </script>
+
   </body>
 </html>

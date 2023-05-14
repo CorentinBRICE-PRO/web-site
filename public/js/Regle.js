@@ -13,3 +13,11 @@ function retourJeu() {
     } 
   
   }
+
+  function bonus() {
+
+    window.location.href = "../404.html?valeur=" + idgame;
+
+    
+  
+  }
